@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>First steps with Groovy's invokedynamic support - derjan.io</title>
+  <meta name="author" content="Jan Ehrhardt">
+
+  
+  <meta name="description" content="It is not really new, but
+Groovy 2.0 is out.
+There is even a version
+2.0.1 released,
+which only fixes some bugs. One of the new features introduced &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://jehrhardt.github.com/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="derjan.io" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">derjan.io</a></h1>
+  
+    <h2>about code and coding</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:jehrhardt.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">First Steps With Groovy's Invokedynamic Support</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-08T07:29:00+02:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>It is not really new, but
+<a href="http://docs.codehaus.org/display/GROOVY/2012/06/28/Groovy+2.0+released">Groovy 2.0 is out</a>.
+There is even a version
+<a href="http://docs.codehaus.org/display/GROOVY/2012/06/28/Groovy+2.0+released">2.0.1 released</a>,
+which only fixes some bugs. One of the new features introduced with
+version 2.0 is support for invokedynamic. But it is not used by
+default, instead you have to activate it. But there is only few
+documentation and it is spread over the web. So how do we use
+invokedynamic in our code?</p>
+
+<!--more-->
+
+
+<h2>Get your machine ready</h2>
+
+<p>First of all you should have installed
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 7</a>,
+since invokedynamic is not available in earlier versions of Java. The
+easiest way to test invokedynamic support is by using the command
+line, so should also have installed
+<a href="http://groovy.codehaus.org/Download">Groovy 2.0</a> or later.</p>
+
+<p>Having Groovy installed you could simply use it with the <em>groovy</em>
+command in your terminal, but a different way, you should be familiar
+with is to compile Groovy code with <em>groovyc</em> to Java byte code. The
+byte code can be executed with <em>java -classpath</em>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>wget -O HelloWorld.groovy https://raw.github.com/gist/3292829/f9d2a37c6cdc45570aab1bf0ce665262899a0dde/HelloWorld.java
+</span><span class='line'>groovyc HelloWorld.groovy
+</span><span class='line'>java -classpath .:<span class="nv">$GROOVY_HOME</span>/embeddable/groovy-all-2.0.1.jar HelloWorld
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>These steps are pretty similar to my
+<a href="https://gist.github.com/3292829">first steps with Java</a> years ago and
+they are necessary to do your first steps with invokedynamic. But at
+this time there is no invokedynamic involved.</p>
+
+<h2>Two steps to use invokedynamic</h2>
+
+<p>The first step on our way to invokedynamic is using the right Groovy
+JAR, while executing our byte code. In <em>$GROOVY_HOME/embeddable/</em> you
+can find <em>groovy-all-2.0.1-indy.jar</em>, where indy is short for
+invokedynamic. This JAR contains a version of Groovy, that uses
+invokedynamic instead of Groovy&#8217;s very own old dynamic invoking code.</p>
+
+<p>Using the indy JAR is not enough, since everything should still work
+under Java 5 or 6, even this JAR is used. The byte code created by
+Groovy compiler is not using any Java 7 features. So the second step
+is to tell the <em>groovyc</em> command to compile our Groovy code using
+invokedynamic by adding the <em>&#8211;indy</em> flag. The above sample should now
+look like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>wget -O HelloWorld.groovy https://raw.github.com/gist/3292829/f9d2a37c6cdc45570aab1bf0ce665262899a0dde/HelloWorld.java
+</span><span class='line'>groovyc --indy HelloWorld.groovy
+</span><span class='line'>java -classpath .:<span class="nv">$GROOVY_HOME</span>/embeddable/groovy-all-2.0.1-indy.jar HelloWorld
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Make your Groovy 2.0 indy</h2>
+
+<p>Running the above code will fail at second command with a curious
+exception:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>groovy.lang.GroovyRuntimeException: Cannot use invokedynamic, indy module was excluded from this build.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What went wrong? Didn&#8217;t I use Groovy 2.0? Didn&#8217;t I pass the <em>&#8211;indy</em>
+flag correctly? The
+<a href="http://permalink.gmane.org/gmane.comp.lang.groovy.devel/26698">solution</a>
+is simple, once you understand your Groovy installation. The Groovy
+JARs used by <em>groovyc</em> are in <em>$GROOVY_HOME/lib/</em>, but the indy JARs
+are in <em>$GROOVY_HOME/indy/</em>. So replace the Groovy JAR with the indy
+version.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> <span class="nv">$GROOVY_HOME</span>
+</span><span class='line'>cp -R lib lib.org
+</span><span class='line'>cp indy/groovy-2.0.1-indy.jar lib/groovy-2.0.1.jar
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now the above sample should work, but it really looks like the Groovy
+developers do not want you to use invokedynamic. They made it as
+difficult as possible, but why?</p>
+
+<h2>Loosing previous optimizations with invokedynamic</h2>
+
+<p>The Groovy developers have spent a lot of time to get Groovy&#8217;s runtime
+faster. One great step was the primitive optimization introduced with
+Groovy 1.8. But these optimizations are not available if everything is
+delegated to the JVM, what happens with invokedynamic.</p>
+
+<p>You can test it using a simple
+<a href="https://gist.github.com/3293383">Fibonacci sample</a>. Running the
+sample on my machine with <em>fibonacci(42)</em>, the result looks like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Java: 1.43s
+</span><span class='line'>Groovy 1.8 or 2.0: 3.08s
+</span><span class='line'>Groovy 2.0 with indy: 6.55s
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>It&#8217;s just the first step for Groovy</h2>
+
+<p>It is good for Groovy to support invokedynamic, but the support is not
+ready yet. Some code might benefit from it, but other does
+definitively not. The JVM currently does not support all optimizations
+the Groovy runtime already does.</p>
+
+<p>Making the usage of invokedynamic difficult hopefully prevents people
+from using it without knowing about the impacts. So we&#8217;ll see, how
+well Groovy and invokedynamic will work together in future versions.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jan Ehrhardt</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-08T07:29:00+02:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/groovy/'>Groovy</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://jehrhardt.github.com/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support/" data-via="derjan" data-counturl="http://jehrhardt.github.com/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/10/18/spring-and-jsr-330-scopes/" title="Previous Post: Spring and JSR 330 scopes">&laquo; Spring and JSR 330 scopes</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support/">First steps with Groovy's invokedynamic support</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/18/spring-and-jsr-330-scopes/">Spring and JSR 330 scopes</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/derjanio">@derjanio</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'derjanio',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("derjan", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/derjan" class="twitter-follow-button" data-show-count="false">Follow @derjan</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Jan Ehrhardt -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

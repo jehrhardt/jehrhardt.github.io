@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Java | derjan.io]]></title>
+  <link href="http://jehrhardt.github.com/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://jehrhardt.github.com/"/>
+  <updated>2012-08-11T16:34:47+02:00</updated>
+  <id>http://jehrhardt.github.com/</id>
+  <author>
+    <name><![CDATA[Jan Ehrhardt]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[First steps with Groovy's invokedynamic support]]></title>
+    <link href="http://jehrhardt.github.com/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support/"/>
+    <updated>2012-08-08T07:29:00+02:00</updated>
+    <id>http://jehrhardt.github.com/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support</id>
+    <content type="html"><![CDATA[<p>It is not really new, but
+<a href="http://docs.codehaus.org/display/GROOVY/2012/06/28/Groovy+2.0+released">Groovy 2.0 is out</a>.
+There is even a version
+<a href="http://docs.codehaus.org/display/GROOVY/2012/06/28/Groovy+2.0+released">2.0.1 released</a>,
+which only fixes some bugs. One of the new features introduced with
+version 2.0 is support for invokedynamic. But it is not used by
+default, instead you have to activate it. But there is only few
+documentation and it is spread over the web. So how do we use
+invokedynamic in our code?</p>
+
+<!--more-->
+
+
+<h2>Get your machine ready</h2>
+
+<p>First of all you should have installed
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 7</a>,
+since invokedynamic is not available in earlier versions of Java. The
+easiest way to test invokedynamic support is by using the command
+line, so should also have installed
+<a href="http://groovy.codehaus.org/Download">Groovy 2.0</a> or later.</p>
+
+<p>Having Groovy installed you could simply use it with the <em>groovy</em>
+command in your terminal, but a different way, you should be familiar
+with is to compile Groovy code with <em>groovyc</em> to Java byte code. The
+byte code can be executed with <em>java -classpath</em>.</p>
+
+<p><code>bash
+wget -O HelloWorld.groovy https://raw.github.com/gist/3292829/f9d2a37c6cdc45570aab1bf0ce665262899a0dde/HelloWorld.java
+groovyc HelloWorld.groovy
+java -classpath .:$GROOVY_HOME/embeddable/groovy-all-2.0.1.jar HelloWorld
+</code></p>
+
+<p>These steps are pretty similar to my
+<a href="https://gist.github.com/3292829">first steps with Java</a> years ago and
+they are necessary to do your first steps with invokedynamic. But at
+this time there is no invokedynamic involved.</p>
+
+<h2>Two steps to use invokedynamic</h2>
+
+<p>The first step on our way to invokedynamic is using the right Groovy
+JAR, while executing our byte code. In <em>$GROOVY_HOME/embeddable/</em> you
+can find <em>groovy-all-2.0.1-indy.jar</em>, where indy is short for
+invokedynamic. This JAR contains a version of Groovy, that uses
+invokedynamic instead of Groovy's very own old dynamic invoking code.</p>
+
+<p>Using the indy JAR is not enough, since everything should still work
+under Java 5 or 6, even this JAR is used. The byte code created by
+Groovy compiler is not using any Java 7 features. So the second step
+is to tell the <em>groovyc</em> command to compile our Groovy code using
+invokedynamic by adding the <em>--indy</em> flag. The above sample should now
+look like this:</p>
+
+<p><code>bash
+wget -O HelloWorld.groovy https://raw.github.com/gist/3292829/f9d2a37c6cdc45570aab1bf0ce665262899a0dde/HelloWorld.java
+groovyc --indy HelloWorld.groovy
+java -classpath .:$GROOVY_HOME/embeddable/groovy-all-2.0.1-indy.jar HelloWorld
+</code></p>
+
+<h2>Make your Groovy 2.0 indy</h2>
+
+<p>Running the above code will fail at second command with a curious
+exception:</p>
+
+<p><code>
+groovy.lang.GroovyRuntimeException: Cannot use invokedynamic, indy module was excluded from this build.
+</code></p>
+
+<p>What went wrong? Didn't I use Groovy 2.0? Didn't I pass the <em>--indy</em>
+flag correctly? The
+<a href="http://permalink.gmane.org/gmane.comp.lang.groovy.devel/26698">solution</a>
+is simple, once you understand your Groovy installation. The Groovy
+JARs used by <em>groovyc</em> are in <em>$GROOVY_HOME/lib/</em>, but the indy JARs
+are in <em>$GROOVY_HOME/indy/</em>. So replace the Groovy JAR with the indy
+version.</p>
+
+<p><code>bash
+cd $GROOVY_HOME
+cp -R lib lib.org
+cp indy/groovy-2.0.1-indy.jar lib/groovy-2.0.1.jar
+</code></p>
+
+<p>Now the above sample should work, but it really looks like the Groovy
+developers do not want you to use invokedynamic. They made it as
+difficult as possible, but why?</p>
+
+<h2>Loosing previous optimizations with invokedynamic</h2>
+
+<p>The Groovy developers have spent a lot of time to get Groovy's runtime
+faster. One great step was the primitive optimization introduced with
+Groovy 1.8. But these optimizations are not available if everything is
+delegated to the JVM, what happens with invokedynamic.</p>
+
+<p>You can test it using a simple
+<a href="https://gist.github.com/3293383">Fibonacci sample</a>. Running the
+sample on my machine with <em>fibonacci(42)</em>, the result looks like this:</p>
+
+<p><code>
+Java: 1.43s
+Groovy 1.8 or 2.0: 3.08s
+Groovy 2.0 with indy: 6.55s
+</code></p>
+
+<h2>It's just the first step for Groovy</h2>
+
+<p>It is good for Groovy to support invokedynamic, but the support is not
+ready yet. Some code might benefit from it, but other does
+definitively not. The JVM currently does not support all optimizations
+the Groovy runtime already does.</p>
+
+<p>Making the usage of invokedynamic difficult hopefully prevents people
+from using it without knowing about the impacts. So we'll see, how
+well Groovy and invokedynamic will work together in future versions.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Spring and JSR 330 scopes]]></title>
+    <link href="http://jehrhardt.github.com/blog/2011/10/18/spring-and-jsr-330-scopes/"/>
+    <updated>2011-10-18T07:09:00+02:00</updated>
+    <id>http://jehrhardt.github.com/blog/2011/10/18/spring-and-jsr-330-scopes</id>
+    <content type="html"><![CDATA[<p>Spring 3 added support for
+<a href="http://download.oracle.com/javaee/6/api/javax/inject/package-summary.html">JSR 330 configuration</a>,
+so you can use <strong>@Named</strong> and  <strong>@Inject</strong> instead of <strong>@Component</strong> and
+<strong>@Autowired</strong>. Unfortunately Spring's default scoping is not compatible with
+JSR 330. Here is how it works:</p>
+
+<!--more-->
+
+
+<h2>Default behaviour</h2>
+
+<p>By default Spring uses it's default scoping behaviour on JSR 330 configured
+beans like below.</p>
+
+<p><code>java
+@Named
+public class GreetingService {
+}
+</code></p>
+
+<p>This means, that <em>GreetingService</em> will become a bean with singleton scope.</p>
+
+<h2>JSR 330 scopes</h2>
+
+<p>In difference to Spring JSR 330 defines, that the default scope of beans is
+prototype, which means a new object is created everytime it will be injected
+somewhere. If you want a different scoping you can create your own annotation for
+this like descriped
+<a href="http://download.oracle.com/javaee/6/api/javax/inject/Scope.html">here</a>. JSR 330
+already comes with a predifined scope annotation for
+<a href="http://download.oracle.com/javaee/6/api/javax/inject/Singleton.html">singletons</a>. To
+make Spring behave as specified in JSR 330, you can use a different scope
+resolver like below.</p>
+
+<p><code>xml
+&lt;context:component-scan base-package="my.package"
+  scope-resolver="org.springframework.context.annotation.Jsr330ScopeMetadataResolver" /&gt;
+</code></p>
+
+<p>Using this additional configuration, will make the above <em>GreetingService</em> bean
+prototype scoped. To make it a singleton bean again, you will need to use the
+singleton scope annotation.</p>
+
+<p><code>java
+@Named
+@Singleton
+public class GreetingService {
+}
+</code></p>
+
+<h2>Custom scopes for JSR 330</h2>
+
+<p>Spring comes with further scopes like <em>request</em> or <em>session</em>. JSR 330 does not
+support them out of the box. You will have to create your own annotations for
+this. Let's look, how to do this for the <em>request</em> scope.</p>
+
+<ol>
+<li>Create your own scope annotation:</li>
+</ol>
+
+
+<p><code>java
+@Scope
+@Documented
+@Retention(RUNTIME)
+public @interface Request {
+}
+</code></p>
+
+<ol>
+<li>Extend <em>Jsr330ScopeMetadataResolver</em> to map your annotation on Spring's
+scope:</li>
+</ol>
+
+
+<p>```java
+public class CustomScopeMetadataResolver extends Jsr330ScopeMetadataResolver {</p>
+
+<p>  public Jsr330SpringScopeMetadataResolver() {</p>
+
+<pre><code>registerScope(Request.class.getName(), WebApplicationContext.SCOPE_REQUEST);
+</code></pre>
+
+<p>  }</p>
+
+<p>}
+```</p>
+
+<ol>
+<li>Use your custom resolver in your Spring configuration:</li>
+</ol>
+
+
+<p><code>xml
+&lt;context:component-scan base-package="my.package"
+  scope-resolver="my.resolver.package.CustomScopeMetadataResolver" /&gt;
+</code></p>
+
+<p>The above sample will make all beans, that are annotated with your own
+<strong>@Request</strong> annotation request scoped.</p>
+]]></content>
+  </entry>
+  
+</feed>
