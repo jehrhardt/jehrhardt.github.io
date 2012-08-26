@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Groovy | derjan]]></title>
-  <link href="http://jehrhardt.github.com/blog/categories/groovy/atom.xml" rel="self"/>
-  <link href="http://jehrhardt.github.com/"/>
-  <updated>2012-08-11T17:56:35+02:00</updated>
-  <id>http://jehrhardt.github.com/</id>
+  <link href="http://derjan.io/blog/categories/groovy/atom.xml" rel="self"/>
+  <link href="http://derjan.io/"/>
+  <updated>2012-08-26T13:01:41+02:00</updated>
+  <id>http://derjan.io/</id>
   <author>
     <name><![CDATA[Jan Ehrhardt]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[First steps with Groovy's invokedynamic support]]></title>
-    <link href="http://jehrhardt.github.com/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support/"/>
+    <link href="http://derjan.io/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support/"/>
     <updated>2012-08-08T07:29:00+02:00</updated>
-    <id>http://jehrhardt.github.com/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support</id>
+    <id>http://derjan.io/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support</id>
     <content type="html"><![CDATA[<p>It is not really new, but
 <a href="http://docs.codehaus.org/display/GROOVY/2012/06/28/Groovy+2.0+released">Groovy 2.0 is out</a>.
 There is even a version
