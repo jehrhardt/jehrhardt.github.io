@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Be fair to Scala, do not expect a better Java - derjan</title>
+  <meta name="author" content="Jan Ehrhardt">
+
+  
+  <meta name="description" content="To some Java developers Scala has become an alternative to Java as a
+programming language. So they started learning it and do the first
+steps in &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://derjan.io/blog/2012/08/27/be-fair-to-scala/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/derjanio" rel="alternate" title="derjan" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9257831-16']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">derjan</a></h1>
+  
+    <h2>about code and coding</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/derjanio" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:derjan.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Be fair to Scala, do not expect a better Java</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-27T12:43:00+02:00" pubdate data-updated="true">Aug 27<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>To some Java developers Scala has become an alternative to Java as a
+programming language. So they started learning it and do the first
+steps in writing some Scala code. To most of them the next step might
+be the first contact with a Scala library and hopefully a Scala test
+framework. But right after the first contact, I here them
+screaming. Oh my god, this library uses all the tricky features Scala
+comes with. Do the developers not care about readability?</p>
+
+<!--more-->
+
+
+<h2>Some lines of Scala code</h2>
+
+<p>What is the problem in Scala? To understand it, lets take a brief look
+to some Scala code.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">object</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nc">App</span> <span class="k">with</span> <span class="nc">PathConversion</span> <span class="k">with</span> <span class="nc">StringConversion</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nc">Files</span><span class="o">.</span><span class="n">write</span><span class="o">(</span><span class="s">&quot;log&quot;</span><span class="o">,</span> <span class="s">&quot;Hello world\n&quot;</span><span class="o">,</span> <span class="nc">APPEND</span><span class="o">)</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This code appends a line to a file. It uses the
+<a href="http://docs.oracle.com/javase/7/docs/api/java/nio/file/package-summary.html">new file API</a>
+introduced in Java 7 to do this.</p>
+
+<p>The
+<a href="http://docs.oracle.com/javase/7/docs/api/java/nio/file/Files.html#write(java.nio.file.Path,%0Abyte[],%20java.nio.file.OpenOption...)">write</a> method only accepts a
+<a href="http://docs.oracle.com/javase/7/docs/api/java/nio/file/Path.html">Path</a>
+object and a byte[] as parameters. The trick is done in the traits
+<em>StringConversion</em> and <em>PathConversion</em>, which provide implicit
+methods to convert Strings.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">trait</span> <span class="nc">StringConversion</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">implicit</span> <span class="k">def</span> <span class="n">bytes</span><span class="o">(</span><span class="n">text</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">=</span> <span class="n">text</span><span class="o">.</span><span class="n">getBytes</span><span class="o">(</span><span class="nc">Charsets</span><span class="o">.</span><span class="nc">UTF_8</span><span class="o">)</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">trait</span> <span class="nc">PathConversion</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">implicit</span> <span class="k">def</span> <span class="n">stringAsPath</span><span class="o">(</span><span class="n">path</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">=</span> <span class="nc">Paths</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="n">path</span><span class="o">)</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The methods in the traits are called implicit, thus the compiler will
+create byte code, that calls these methods. But these calls are not
+written expilcitly in the code.</p>
+
+<h2>What Java developers do not like</h2>
+
+<p>The above code snippets are using a nice features, that Scala provides
+and that Java does not. But when Java developers start using Scala,
+they often look at it as a better Java and thus they expect to use
+their existing skills.</p>
+
+<p>One problem are the implicit calls to methods. In the Java world
+static typing is not just used for type checking at compile time. It
+is also used as an implicit type documentation. So a Java developer
+would look at the signature of the write method and see that it only
+accepts objects of type Path and byte[] as parameters. But a look to
+the method call shows, that Strings are passed to it.</p>
+
+<p>From a Java developer&#8217;s point of view, this is not easy to understand.
+Where is this implicit conversion of types done? A Java developer
+might think, this reduces readability. But this is not true.</p>
+
+<h2>It is not Scala&#8217;s fault</h2>
+
+<p>Scala is not a better Java. It is a completely different language. As
+any other language too, Scala also has a community around it. There
+are libraries and APIs designed for Scala and they are using the
+features of the language. This is exactly how it should be.</p>
+
+<p>The way a developer works with Java is not the way a developer works
+with Ruby or Python or even JavaScript. Many Ruby developers use a
+text editor instead of a fat IDE, while Java without any IDE is really
+painful. Using the declared types of method parameters to figure out,
+what you can pass into this method is also a Java way of working. In
+Ruby, Python or JavaScript, there are no declared types. There is even
+no type checking at compile time. But people know how to use methods
+and classes in these languages as well.</p>
+
+<p>Scala&#8217;s type system is very powerful, while Java&#8217;s is not. It allows
+you to do things like the above and it is good, when Scala developers
+are using these features in their code and APIs. But the power of
+Scala&#8217;s type system makes it also complex. The compiler can check the
+types, while the developer may not understand them easily from the
+method signature.</p>
+
+<h2>Learn to work the Scala way</h2>
+
+<p>There is only one solution to this problem. Java developers must learn
+how to work with a language, that has a type system different from
+Java&#8217;s. They have to change their mind and extend their skills.</p>
+
+<p>Well, if you do not get comfortable with this, Scala is not your
+language. Take your hands off and go home to your Java code.</p>
+
+<p>What do you think? How do you solve the parameter documentation in
+your favorite programming language? And how do you figure out how to
+use a method?</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jan Ehrhardt</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-27T12:43:00+02:00" pubdate data-updated="true">Aug 27<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/scala/'>Scala</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://derjan.io/blog/2012/08/27/be-fair-to-scala/" data-via="derjan" data-counturl="http://derjan.io/blog/2012/08/27/be-fair-to-scala/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support/" title="Previous Post: First steps with Groovy's invokedynamic support">&laquo; First steps with Groovy's invokedynamic support</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/08/27/be-fair-to-scala/">Be fair to Scala, do not expect a better Java</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support/">First steps with Groovy's invokedynamic support</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/18/spring-and-jsr-330-scopes/">Spring and JSR 330 scopes</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jehrhardt">@jehrhardt</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jehrhardt',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("derjan", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/derjan" class="twitter-follow-button" data-show-count="false">Follow @derjan</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  By Jan Ehrhardt - Licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'derjanio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://derjan.io/blog/2012/08/27/be-fair-to-scala/';
+        var disqus_url = 'http://derjan.io/blog/2012/08/27/be-fair-to-scala/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
