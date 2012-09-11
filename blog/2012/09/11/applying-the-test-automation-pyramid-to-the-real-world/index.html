@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Applying the test automation pyramid to the real world - derjan</title>
+  <meta name="author" content="Jan Ehrhardt">
+
+  
+  <meta name="description" content="You probaply heard of the test automation pyramid, which is a great
+idea to make automated testing work in an agile development
+environment. The &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://derjan.io/blog/2012/09/11/applying-the-test-automation-pyramid-to-the-real-world/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/derjanio" rel="alternate" title="derjan" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9257831-16']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">derjan</a></h1>
+  
+    <h2>about code and coding</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/derjanio" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:derjan.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Applying the test automation pyramid to the real world</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-11T07:47:00+02:00" pubdate data-updated="true">Sep 11<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img class="right" src="/media/test-pyramid-fowler.png" width="373" height="540" title="Test Pyramid by Martin Fowler" alt="Test Pyramid by Martin Fowler"></p>
+
+<p>You probaply heard of the test automation pyramid, which is a great
+idea to make automated testing work in an agile development
+environment. The image copied from <a href="https://twitter.com/martinfowler">Martin Fowler</a> shows it. He has also
+<a href="http://martinfowler.com/bliki/TestPyramid.html">explains the pyramid</a>
+pretty well.</p>
+
+<p>The pyramid has three layers UI, Service and Unit tests. Theses layers
+map well to standard web applications.  But in more complex systems
+this simple model does not fit exactly at first view. But that is not
+true. It fits perfectly, if you understand it right.</p>
+
+<!--more-->
+
+
+<h2>What is wrong with the real world?</h2>
+
+<p>The test automation pyramid is created with web applications in
+mind. Think of a simple monolithic LAMP or Rails application. All the
+code is on the same server. In this case the idea of the pyramid fits
+perfectly, since we have an UI and a monolithic application.</p>
+
+<p>In the real world, the situation differs a lot. Many applications do
+not have an UI at all. They might be so called backend services, which
+provide some logic, that works somewhere in the backround. The UI part
+of the software system is is probably written in a language like
+<a href="http://www.ruby-lang.org">Ruby</a>, while the backend services - maybe
+written in <a href="http://openjdk.java.net">Java</a>,
+<a href="http://www.scala-lang.org">Scala</a> or <a href="http://clojure.org">Clojure</a> -
+are accessed through HTTP. But how do you apply the pyramid?</p>
+
+<h2>What is wrong with the pyramid?</h2>
+
+<p>The problem comes from the miss leading names of the layers in the
+pyramid. E. g. the top layer is called UI tests and our backend
+application has no UI. Sure there is hopefully an UI application, that
+access our backend service and has UI tests, but is that enough?</p>
+
+<p>The solution is a simple renaming of the layers. Let us call the top
+layer <em>function tests</em> instead of UI tests. This name also applies well
+to non GUI applications. The tests in this layer should be very
+similar to UI tests.</p>
+
+<h2>Testing an application works</h2>
+
+<p>The <em>functional test</em> layer on top should prove the application
+works. This means, you have at least to start your application
+and access it through some mechanism similar to your production
+environment. In the best case your application will be deployed to a
+real server with a real database. Everything like authentication or
+access over the network should happen in a function test the same way
+it does in a production environment.</p>
+
+<p>While the infrastructural requirements for theses tests are high and
+the tests itself might run very slow, there should be only few test
+cases in this category. You should not test failures here or some edge
+cases. Simply make sure your application is deployed, can access the
+database and answers as expected to some requests.</p>
+
+<p>This kind of definition works for backend applications as well as for
+UI applications. UI tests are just a special form of functional
+tests. If you have both an UI application with UI tests and a backend
+service, your UI tests should run end to end, which also includes your
+backend services. In addition your backend service can also have its
+own functional tests, doing some basic HTTP requests. So you end up
+with functional tests on different layers of your system.</p>
+
+<p>An important point is to know, that developers might not run theses
+test very frequently on their own local machines. But this is ok as
+long as some continous integration server will run them regularly.</p>
+
+<h2>Testing your application behaves correctly</h2>
+
+<p>When <em>functional tests</em> do not test the correct behaviour of your
+application, you need another layer to this. In the test pyramid the
+<em>service test</em> layer does this job.</p>
+
+<p>Different to functional tests developers should run service tests very
+frequently. Thus the tests must execute fast enough to do
+this. Starting a Java EE application server might be much to slow for
+this. So service tests should skip this. Instead they should be
+written similar to unit tests, using a tool like Junit and
+instantiating objects from your code.</p>
+
+<p>But what should be tested exactly? A good service test runs a
+typical scenario, that might appear similar in production. So take a
+typical conversation with your application and write it down in your
+test case. You should make sure, you focus on positive tests and skip
+error handling and edge cases at this level.</p>
+
+<p>Service tests should make sure, the parts of your code work together
+as expected and behave like they should. This includes integration
+with third party libraries and even persistence. But always keep it
+simple. Use a simple database like <a href="http://www.sqlite.org">SQLite</a> or
+<a href="http://www.h2database.com">H2</a> instead of a full blown database
+server. Use simple HTTP mocks with static JSON files instead of real
+services in the backend. Keep your infrastructure as lean as possible
+to make running the tests easy.</p>
+
+<h2>Testing your code</h2>
+
+<p>A <em>unit test</em> should be executable as fast as possible. If some
+framework needs some seconds to initialize, skip it in the unit
+tests. Make your tests as fast as possible. There is a simple reason
+for this performance requirement. Developers should not run unit tests
+just frequently, they should run them as often as possible. You
+changed a line of code? Run the tests! This is how it should work and
+thus performance matters a lot.</p>
+
+<p>Since unit tests should be very fast, it is cheap to run them, but it
+is also cheap to test edge cases and failure handling in unit
+tests. If your application should be able to deal with null values,
+unit tests are the place to prove it. If your application should
+validate some data, unit tests are the place to prove it. If your
+application should apply an algorithm, unit tests are the place to
+prove it.</p>
+
+<p>Unit tests can do
+<a href="/blog/2012/08/31/dont-miss-to-write-good-unit-tests/">much more</a>. They
+can help other developers to understand your code and its behaviour
+better. They can help you to change your code, without fearing to
+break it. And they can help you to find errors in the code, when they
+fail.</p>
+
+<h2>When should your tests run?</h2>
+
+<p>Unit tests can be found near the production code. In multi module
+projects, each module will have its unit tests. Most tools like Maven
+or Gradle in the Java world or Rake in the Ruby world will run the
+unit test by default, so there should be no probem for your continous
+integration server. Java IDEs have also integration for common test
+frameworks.</p>
+
+<p>Little harder is to run service tests. They might be much slower than
+unit tests, so there should not be so much test cases to
+run. Important is, that a standard build like <em>gradle build</em> or <em>mvn
+clean package</em> will run theses tests. After all modules have been
+compiled, all unit tests should be executed. Now it is time to run the
+integration tests. They prove, the standard interaction with your
+software works well. Integration tests can be placed in a separate
+module to make this work best. But at least keep them separated from
+your unit tests to reduce problems.</p>
+
+<p>The hardest part are the functional tests. Since their primary goal is
+to prove, the software runs and works as expected, there is no reason
+to execute them all the time as part of the standard build. Instead
+you should make theses tests easily executable without building the
+whole software. It is great, when a continous integration server
+deploys the software on a test machine with a real database, real HTTP
+and real authentication and than runs the functional tests against
+this system.</p>
+
+<h2>Other ways</h2>
+
+<p>Sure this is one solution to the problem and you may have found
+another way to work with different test levels. What do you think?
+How did you solve this? What worked great? What was bad? Leave me a
+comment.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jan Ehrhardt</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-11T07:47:00+02:00" pubdate data-updated="true">Sep 11<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/agile-development/'>Agile Development</a>, <a class='category' href='/blog/categories/best-practices/'>Best Practices</a>, <a class='category' href='/blog/categories/tdd/'>TDD</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://derjan.io/blog/2012/09/11/applying-the-test-automation-pyramid-to-the-real-world/" data-via="derjan" data-counturl="http://derjan.io/blog/2012/09/11/applying-the-test-automation-pyramid-to-the-real-world/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/08/31/dont-miss-to-write-good-unit-tests/" title="Previous Post: Don't miss to write good unit tests">&laquo; Don't miss to write good unit tests</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/09/11/applying-the-test-automation-pyramid-to-the-real-world/">Applying the test automation pyramid to the real world</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/08/31/dont-miss-to-write-good-unit-tests/">Don't miss to write good unit tests</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/08/27/be-fair-to-scala/">Be fair to Scala, do not expect a better Java</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support/">First steps with Groovy's invokedynamic support</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/18/spring-and-jsr-330-scopes/">Spring and JSR 330 scopes</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jehrhardt">@jehrhardt</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jehrhardt',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("derjan", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/derjan" class="twitter-follow-button" data-show-count="false">Follow @derjan</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  By Jan Ehrhardt - Licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'derjanio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://derjan.io/blog/2012/09/11/applying-the-test-automation-pyramid-to-the-real-world/';
+        var disqus_url = 'http://derjan.io/blog/2012/09/11/applying-the-test-automation-pyramid-to-the-real-world/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
