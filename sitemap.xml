@@ -2,7 +2,7 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://derjan.io/blog/2011/10/18/spring-and-jsr-330-scopes/</loc>
-        <lastmod>2012-08-31T10:01:21+02:00</lastmod>
+        <lastmod>2012-09-17T23:29:35+02:00</lastmod>
     </url>
     <url>
         <loc>
@@ -25,11 +25,17 @@
         <lastmod>2012-09-11T07:49:45+02:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://derjan.io/blog/2012/09/17/links-urls-and-urns-to-identify-entities-in-restful-apis/
+        </loc>
+        <lastmod>2012-09-17T23:30:07+02:00</lastmod>
+    </url>
+    <url>
         <loc>http://derjan.io/blog/archives/</loc>
-        <lastmod>2012-09-11T07:49:45+02:00</lastmod>
+        <lastmod>2012-09-17T23:30:07+02:00</lastmod>
     </url>
     <url>
         <loc>http://derjan.io/</loc>
-        <lastmod>2012-09-11T07:49:45+02:00</lastmod>
+        <lastmod>2012-09-17T23:30:07+02:00</lastmod>
     </url>
 </urlset>
