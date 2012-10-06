@@ -4,7 +4,7 @@
   <title><![CDATA[derjan]]></title>
   <link href="http://derjan.io/atom.xml" rel="self"/>
   <link href="http://derjan.io/"/>
-  <updated>2012-10-06T19:11:43+02:00</updated>
+  <updated>2012-10-06T21:55:55+02:00</updated>
   <id>http://derjan.io/</id>
   <author>
     <name><![CDATA[Jan Ehrhardt]]></name>
@@ -12,6 +12,156 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Discovery of Java Land]]></title>
+    <link href="http://derjan.io/blog/2012/10/06/discovery-of-java-land/"/>
+    <updated>2012-10-06T19:16:00+02:00</updated>
+    <id>http://derjan.io/blog/2012/10/06/discovery-of-java-land</id>
+    <content type="html"><![CDATA[<p>I am developing Java code for many years now and know how to do
+this. But some years ago, I started to look what else happens in the
+programming world. I figured out, that other developers are not just
+using other programming languages, they are also using other tools and
+come with another mindset. While I learned a lot about how others do
+their work, I found more Java developers looking outsite the Java
+world in the last months and they were wondering what happens
+there. But why is the the Java world culturally so isolated, that even
+experienced developers struggle with the tools everyone else uses?</p>
+
+<!--more-->
+
+
+<h2>Meeting the clash</h2>
+
+<p>Over the last few years I have done a few or even more steps with
+different languages. I have taken a look to
+<a href="http://www.python.org">Python</a>, which was disillusioning. The
+language was so unfancy and old, but of cause still useful. I did some
+steps with <a href="http://www.ruby-lang.org">Ruby</a>, which was pretty
+interessting. I played around with <a href="http://nodejs.org">node.js</a> and
+<a href="https://en.wikipedia.org/wiki/JavaScript">JavaScript</a>. And of cause I
+did some <a href="http://www.scala-lang.org">Scala</a> and
+<a href="http://groovy.codehaus.org">Groovy</a>. But my personal favorite is
+<a href="http://clojure.org/">Clojure</a>. I learned programming with
+<a href="https://en.wikipedia.org/wiki/Scheme_(programming_language)">Scheme</a>
+and thus using a
+<a href="https://en.wikipedia.org/wiki/Lisp_programming_language">Lisp</a> on the
+<a href="https://en.wikipedia.org/wiki/Java_virtual_machine">JVM</a> could not
+feel more natural to me.</p>
+
+<p>But Clojure looks more interessting, when you see the people using
+it. They are not just Java programmers. They are coming from different
+languages and cultures. I see Ruby and Python developers hacking
+Clojure as well as Java developers and even old Lisp fans. But this
+brings together two programming cultures, that could not be more
+different.</p>
+
+<h2>IDE vs text editor</h2>
+
+<p>Java is not fun with all this boiler plate code. To make such a
+language usable, you will need a good tool. Not a good text editor, a
+really heavy tool, that does so much more. I am sure, I would not
+write Java code, if I had not a powerful
+<a href="http://www.jetbrains.com/idea/">IDE</a>.</p>
+
+<p>But as I have written my first lines of Ruby some years ago, I figured
+out, that programming in a text editor could work pretty well. I do
+not know how many Ruby or Python developers use an IDE, but none I
+personally know. I know many of them using vi or
+<a href="http://www.vim.org">vim</a> and some using
+<a href="http://www.gnu.org/software/emacs/">Emacs</a> like
+<a href="https://github.com/jehrhardt/prelude">me</a>. But none of them is using
+an IDE.</p>
+
+<p>Since I know how useful IDEs are for coding Java, I also know how
+useless they are for coding Ruby or of cause Clojure. To me my Emacs is
+the perfect tool to writting Clojure code. A brief look to the Clojure
+community shows, I am not alone with this. But a brief talk to some
+Java developer shows, how much he is tied to his IDE.</p>
+
+<p>Some might simply be not comfortable with a text editor, which is
+ok. But some even do not understand, that there are languages, that
+are more usable than Java and thus create no need for an IDE.</p>
+
+<h2>IDE vs Terminal</h2>
+
+<p>Some years ago as I first tried a new build tool for Java projects
+called <a href="http://gradle.org">Gradle</a>, it was not possible to get the
+tool into real projects. There was a simple reason: the IDE!</p>
+
+<p>Gradle had a bad IDE integration and thus there was no way to use
+it. Gradle was cool and did some nice things, but it did not work well
+with the IDE.</p>
+
+<p>In the Ruby world I did not find somthing similar. New tools are tried
+out by others very quickly, since everone uses a
+<a href="https://en.wikipedia.org/wiki/Terminal_emulator">terminal</a>. And tools
+are provided mostly with a termial interfaces. It looks like the
+Clojure community is more like the Ruby community than the Java
+community. Most projects use <a href="http://leiningen.org">Leinigen</a> instead
+of <a href="https://maven.apache.org">Maven</a>, which also allows to do
+Clojure. Many already use Leinigen 2, which has not been released yet.</p>
+
+<p>I know Java developers, who execute Maven goals with a mouse click
+from their IDE and not from the Terminal. They do not use a library
+for unit testing, that is not supported by their IDE. They do nothing,
+without their IDE.</p>
+
+<p>The companies making money with Java tools have done a very good
+Job. They have created a generation of developers that do not know how
+to use a powerful command line tool. They have made all the quirky
+stuff in the Java world useable by hiding the command line instead of
+creating better tools. The Java developers are now addicted.</p>
+
+<h2>Static vs dynamic typing</h2>
+
+<p>There is this one big argument, a Java developer will have, why he
+still believes in Java: static typing. Java&#8217;s static type system is
+not very powerful. It is not very flexible. It is a pain. But to a
+Java developer it is the core feature, since there are no others.</p>
+
+<p>Static typing allows the Java IDEs to provide a lot of
+information. IDEs show you what a method returns and what methods
+could be invoked on the result. Beside this results in massive
+violations of the
+<a href="https://en.wikipedia.org/wiki/Law_of_Demeter">Law of Demeter</a>, it is
+just another reason, why Java developers are addicted to their
+IDEs. They simply do not know how to learn somthing about an API
+without seeing the invokable methods in the IDE.</p>
+
+<p>A good library comes with a good documentation and with examples. In
+the best case there are a lot of tests, that provide you the best
+sample code to learn how to use the library. You can also clone the
+repository and take a look to the code. On the other hand libraries
+without good documentation are hard to use and thus people do not use
+them. This is how to become comfortable with a new library. You must
+understand what it does and how to use it.</p>
+
+<p>Most languages also provide a console or interactive mode. In Clojure
+or other Lisps it is called
+<a href="http://clojure.org/getting_started">REPL</a>. This is a great way to
+figure out how to use an API. You simply try it. But in the Java
+world, there is nothing similar, so developers cannot work without the
+information from the IDE.</p>
+
+<p>This might be the hardest point to understand for a Java
+developer. You can be very productive, without an IDE that shows you
+what methods you can invoke on an object. You can simply know it, read
+it or try things out.</p>
+
+<h2>The discovery has started</h2>
+
+<p>The world could be fine with IDE addicted Java developers isolated
+from the innovative rest. But with Clojure the game has
+changed. Clojure seems to be the gate for developers from other
+programming languages to the Java world. More than
+<a href="http://jruby.org">JRuby</a> it opens the JVM for people, who do not need
+an IDE.</p>
+
+<p>But Java developers must not struggle. They can do Clojure with Maven
+and some IDE plugin to learn the language. That might be the red pill!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Links, URLs and URNs to identify entities in RESTful APIs]]></title>
