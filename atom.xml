@@ -4,7 +4,7 @@
   <title><![CDATA[derjan]]></title>
   <link href="http://derjan.io/atom.xml" rel="self"/>
   <link href="http://derjan.io/"/>
-  <updated>2012-10-16T09:17:40+02:00</updated>
+  <updated>2012-10-16T12:47:21+02:00</updated>
   <id>http://derjan.io/</id>
   <author>
     <name><![CDATA[Jan Ehrhardt]]></name>
@@ -21,7 +21,7 @@
     <content type="html"><![CDATA[<p>There is a simple rule, why we write unit test or better why we
 should. Unit tests give us the required trust to refactor our
 code. Changing code is the reason, why we test it. But many developers
-do not trust there unit tests. They expect a wrong kind of trust, that
+do not trust their unit tests. They expect a wrong kind of trust, that
 unit test can not supply. Time to change how we think about quality
 and changing code.</p>
 
