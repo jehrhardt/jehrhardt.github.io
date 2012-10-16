@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>We do not trust our unit tests - derjan</title>
+  <meta name="author" content="Jan Ehrhardt">
+
+  
+  <meta name="description" content="There is a simple rule, why we write unit test or better why we
+should. Unit tests give us the required trust to refactor our
+code. Changing code is &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://derjan.io/blog/2012/10/16/we-do-not-trust-our-unit-tests/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/derjanio" rel="alternate" title="derjan" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9257831-16']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">derjan</a></h1>
+  
+    <h2>about code and coding</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/derjanio" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:derjan.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">We do not trust our unit tests</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-16T07:33:00+02:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>There is a simple rule, why we write unit test or better why we
+should. Unit tests give us the required trust to refactor our
+code. Changing code is the reason, why we test it. But many developers
+do not trust there unit tests. They expect a wrong kind of trust, that
+unit test can not supply. Time to change how we think about quality
+and changing code.</p>
+
+<!--more-->
+
+
+<h2>The missing trust in units</h2>
+
+<p>The trust developers want is a large one. They want to trust their
+application as a whole.  They want to know changing a line of code
+breaks the application. There is a good reason for this. If you write
+a method in a class that is used in many places everywhere in your
+code and you change a line in this method, you can break many parts in
+your software.</p>
+
+<p>The solution is to do tests on the highest reasonable level. In the
+best case this level is the UI of your software. But UI tests are also
+the slowest solution. They require a lot of things. You should run
+them on all supported platforms or browsers. You should run them with
+a real database and all these other services, that will be involved in
+your production environment. All these things must be done for just
+changing one line of code. You only trust in this probably simple
+change, when the whole application is set up and its UI still does
+what it should.</p>
+
+<p>As you might guess there is a better solution. Unit tests should run
+very fast.  You should run them as part of your development process
+many times in a hour. But they simply test a simple method or class.
+How can we trust them? How can we prove the application will not be
+broken by changing code?</p>
+
+<h2>Write testable code</h2>
+
+<p>Many people try to tell us
+<a href="/blog/2012/08/31/dont-miss-to-write-good-unit-tests/">TDD</a> results in
+testable code. But this is not true.  You first need to understand
+what testable code really is. Testable code is written in a way, that
+allows you to trust your unit tests. This includes testable code is
+easy to test, but it means a lot more. Testable code is build of small
+units with a well defined API. The API is defined by the unit tests
+and the tests prove, the API works as expected.</p>
+
+<p>A simple example. You have got a method, that is used all over your
+code. It is invoked in hundreds of places. This might be good
+sign. Your code is highly reusable. But having such a method means,
+its API is used very frequently and changing the API has a big
+potential to break your application. If you need to change this
+method, try to keep its API stable. If you have good unit tests, you
+can easily prove the stability.</p>
+
+<p>A simple step to get code more testable is writting small classes
+doing just a few things. Small classes are easier to test, but it is
+also easier to keep there APIs stable. If classes have few
+dependencies and small classes tend to have few dependencies, there
+might be less potential side effects from other objects at
+runtime. This will help you to make classes&#8217; APIs more stable.</p>
+
+<p>If you write testable code, your code will become a big bunch of small
+pieces each with a very stable API. If you make a change to your code,
+it might affect just few places and hopefully it does not break your
+internal APIs.</p>
+
+<h2>What about the need of API breaks?</h2>
+
+<p>Stable APIs are a good idea and you should pursue them. But sometimes
+breaks are unavoidable. How can we deal with them?</p>
+
+<p>A breaking API affects the users of the API. If your API breaks and
+thus your existing tests have been changed, you need to work on the
+users of the class or method too. Check their unit tests and write new
+tests, if required to prove the API changes in the changed class do
+not break their API. If their API also has been broken, go on and work
+on their users too. Do this until you reach the point, where an API
+keeps stable.</p>
+
+<p>Testable code helps to deal with this. Breaking a classes API in a
+testable code base does not affect the whole code. Instead it affects
+just few classes or methods. If an API break also breaks the APIs of
+the code&#8217;s users, the code base is not testable.</p>
+
+<h2>Improve quality</h2>
+
+<p>We have seen, what kind of trust unit tests can supply to us. Although
+this trust does not work very well, when your code is not testable
+improving your code&#8217;s quality writing testable code is a much better
+way than doing all tests through the UI and let your code rot.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jan Ehrhardt</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-16T07:33:00+02:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/tdd/'>TDD</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://derjan.io/blog/2012/10/16/we-do-not-trust-our-unit-tests/" data-via="derjan" data-counturl="http://derjan.io/blog/2012/10/16/we-do-not-trust-our-unit-tests/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/06/discovery-of-java-land/" title="Previous Post: Discovery of Java Land">&laquo; Discovery of Java Land</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/16/we-do-not-trust-our-unit-tests/">We do not trust our unit tests</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/06/discovery-of-java-land/">Discovery of Java Land</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/17/links-urls-and-urns-to-identify-entities-in-restful-apis/">Links, URLs and URNs to identify entities in RESTful APIs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/11/applying-the-test-automation-pyramid-to-the-real-world/">Applying the test automation pyramid to the real world</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/08/31/dont-miss-to-write-good-unit-tests/">Don't miss to write good unit tests</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jehrhardt">@jehrhardt</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jehrhardt',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("derjan", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/derjan" class="twitter-follow-button" data-show-count="false">Follow @derjan</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  By Jan Ehrhardt - Licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'derjanio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://derjan.io/blog/2012/10/16/we-do-not-trust-our-unit-tests/';
+        var disqus_url = 'http://derjan.io/blog/2012/10/16/we-do-not-trust-our-unit-tests/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
