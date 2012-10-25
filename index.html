@@ -9,10 +9,9 @@
   <meta name="author" content="Jan Ehrhardt">
 
   
-  <meta name="description" content="I have done some development with
-GWT in the past. It felt
-pretty natural to me as a Java developer, but I would not choose it
-anymore. The primary &hellip;">
+  <meta name="description" content="If you are forced to use SVN, you can still use Git. Git is a great
+SVN client. When your
+SVN repository has multiple branches and you must work on &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +78,75 @@ anymore. The primary &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/25/git-as-svn-client-with-multiple-branches/">Git as SVN client with multiple branches</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-25T10:45:00+02:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you are forced to use SVN, you can still use Git. Git is a great
+<a href="http://blog.tfnico.com/search/label/git-svn">SVN client</a>. When your
+SVN repository has multiple branches and you must work on them, Git
+can also handle this.</p>
+
+<p>First you must define a new SVN remote in your Git repository. When
+you look into the file <em>.git/config</em>, you will find the following:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[svn-remote "svn"]
+</span><span class='line'>        url = svn+ssh://my-svn-repo
+</span><span class='line'>        fetch = :refs/remotes/git-svn</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is the definition of the default SVN remote created by <em>git svn
+clone svn+ssh://my-svn-repo</em>. You can simply add the following bellow
+this default remote.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[svn-remote "svn-second-branch"]
+</span><span class='line'>        url = svn+ssh://my-second-svn-branch
+</span><span class='line'>        fetch = :refs/remotes/git-svn-second-branch</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This adds a new SVN remote named <em>svn-second-branch</em> once you have
+fetched it with <em>git svn fetch svn-second-branch</em>, it will be
+available in Git with the name <em>git-svn-second-branch</em>.</p>
+
+<p>If you want to ckeck it out, run <em>git checkout git-svn-second-branch
+-b my-local-branch</em>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -532,52 +600,9 @@ invokedynamic in our code?</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/18/spring-and-jsr-330-scopes/">Spring and JSR 330 scopes</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-18T07:09:00+02:00" pubdate data-updated="true">Oct 18<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Spring 3 added support for
-<a href="http://download.oracle.com/javaee/6/api/javax/inject/package-summary.html">JSR 330 configuration</a>,
-so you can use <strong>@Named</strong> and  <strong>@Inject</strong> instead of <strong>@Component</strong> and
-<strong>@Autowired</strong>. Unfortunately Spring&#8217;s default scoping is not compatible with
-JSR 330. Here is how it works:</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/10/18/spring-and-jsr-330-scopes/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -588,6 +613,10 @@ JSR 330. Here is how it works:</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/25/git-as-svn-client-with-multiple-branches/">Git as SVN client with multiple branches</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/10/23/you-should-not-use-gwt/">You should not use GWT</a>
@@ -603,10 +632,6 @@ JSR 330. Here is how it works:</p>
     
       <li class="post">
         <a href="/blog/2012/10/06/discovery-of-java-land/">Discovery of Java Land</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/17/links-urls-and-urns-to-identify-entities-in-restful-apis/">Links, URLs and URNs to identify entities in RESTful APIs</a>
       </li>
     
   </ul>

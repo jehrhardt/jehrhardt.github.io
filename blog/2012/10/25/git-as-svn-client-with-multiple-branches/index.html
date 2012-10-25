@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Programming languages - derjan</title>
+  <title>Git as SVN client with multiple branches - derjan</title>
   <meta name="author" content="Jan Ehrhardt">
 
   
-  <meta name="description" content="Category: Programming languages">
+  <meta name="description" content="If you are forced to use SVN, you can still use Git. Git is a great
+SVN client. When your
+SVN repository has multiple branches and you must work on &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://derjan.ioblog/categories/programming-languages/">
+  <link rel="canonical" href="http://derjan.io/blog/2012/10/25/git-as-svn-client-with-multiple-branches/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -75,36 +77,124 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Programming languages</h1>
+    
+      <h1 class="entry-title">Git as SVN client with multiple branches</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-25T10:45:00+02:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>If you are forced to use SVN, you can still use Git. Git is a great
+<a href="http://blog.tfnico.com/search/label/git-svn">SVN client</a>. When your
+SVN repository has multiple branches and you must work on them, Git
+can also handle this.</p>
 
-  
-  <h2>2012</h2>
+<p>First you must define a new SVN remote in your Git repository. When
+you look into the file <em>.git/config</em>, you will find the following:</p>
 
-<article>
-  
-<h1><a href="/blog/2012/10/06/discovery-of-java-land/">Discovery of Java Land</a></h1>
-<time datetime="2012-10-06T19:16:00+02:00" pubdate><span class='month'>Oct</span> <span class='day'>06</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/cultural-clash/'>Cultural clash</a>, <a class='category' href='/blog/categories/programming-languages/'>Programming languages</a></span>
-</footer>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[svn-remote "svn"]
+</span><span class='line'>        url = svn+ssh://my-svn-repo
+</span><span class='line'>        fetch = :refs/remotes/git-svn</span></code></pre></td></tr></table></div></figure>
 
 
-</article>
+<p>This is the definition of the default SVN remote created by <em>git svn
+clone svn+ssh://my-svn-repo</em>. You can simply add the following bellow
+this default remote.</p>
 
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[svn-remote "svn-second-branch"]
+</span><span class='line'>        url = svn+ssh://my-second-svn-branch
+</span><span class='line'>        fetch = :refs/remotes/git-svn-second-branch</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This adds a new SVN remote named <em>svn-second-branch</em> once you have
+fetched it with <em>git svn fetch svn-second-branch</em>, it will be
+available in Git with the name <em>git-svn-second-branch</em>.</p>
+
+<p>If you want to ckeck it out, run <em>git checkout git-svn-second-branch
+-b my-local-branch</em>.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Jan Ehrhardt</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-25T10:45:00+02:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/svn/'>SVN</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://derjan.io/blog/2012/10/25/git-as-svn-client-with-multiple-branches/" data-via="derjan" data-counturl="http://derjan.io/blog/2012/10/25/git-as-svn-client-with-multiple-branches/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/23/you-should-not-use-gwt/" title="Previous Post: You should not use GWT">&laquo; You should not use GWT</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -205,7 +295,10 @@
       var disqus_shortname = 'derjanio';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://derjan.io/blog/2012/10/25/git-as-svn-client-with-multiple-branches/';
+        var disqus_url = 'http://derjan.io/blog/2012/10/25/git-as-svn-client-with-multiple-branches/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -4,7 +4,7 @@
   <title><![CDATA[derjan]]></title>
   <link href="http://derjan.io/atom.xml" rel="self"/>
   <link href="http://derjan.io/"/>
-  <updated>2012-10-25T07:43:13+02:00</updated>
+  <updated>2012-10-25T10:49:36+02:00</updated>
   <id>http://derjan.io/</id>
   <author>
     <name><![CDATA[Jan Ehrhardt]]></name>
@@ -12,6 +12,48 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Git as SVN client with multiple branches]]></title>
+    <link href="http://derjan.io/blog/2012/10/25/git-as-svn-client-with-multiple-branches/"/>
+    <updated>2012-10-25T10:45:00+02:00</updated>
+    <id>http://derjan.io/blog/2012/10/25/git-as-svn-client-with-multiple-branches</id>
+    <content type="html"><![CDATA[<p>If you are forced to use SVN, you can still use Git. Git is a great
+<a href="http://blog.tfnico.com/search/label/git-svn">SVN client</a>. When your
+SVN repository has multiple branches and you must work on them, Git
+can also handle this.</p>
+
+<p>First you must define a new SVN remote in your Git repository. When
+you look into the file <em>.git/config</em>, you will find the following:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[svn-remote "svn"]
+</span><span class='line'>        url = svn+ssh://my-svn-repo
+</span><span class='line'>        fetch = :refs/remotes/git-svn</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is the definition of the default SVN remote created by <em>git svn
+clone svn+ssh://my-svn-repo</em>. You can simply add the following bellow
+this default remote.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[svn-remote "svn-second-branch"]
+</span><span class='line'>        url = svn+ssh://my-second-svn-branch
+</span><span class='line'>        fetch = :refs/remotes/git-svn-second-branch</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This adds a new SVN remote named <em>svn-second-branch</em> once you have
+fetched it with <em>git svn fetch svn-second-branch</em>, it will be
+available in Git with the name <em>git-svn-second-branch</em>.</p>
+
+<p>If you want to ckeck it out, run <em>git checkout git-svn-second-branch
+-b my-local-branch</em>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[You should not use GWT]]></title>
