@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Emacs | derjan]]></title>
+  <link href="http://derjan.io/blog/categories/emacs/atom.xml" rel="self"/>
+  <link href="http://derjan.io/"/>
+  <updated>2012-10-27T12:17:09+02:00</updated>
+  <id>http://derjan.io/</id>
+  <author>
+    <name><![CDATA[Jan Ehrhardt]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs as default editor for Git]]></title>
+    <link href="http://derjan.io/blog/2012/10/27/emacs-as-default-editor-for-git/"/>
+    <updated>2012-10-27T12:17:00+02:00</updated>
+    <id>http://derjan.io/blog/2012/10/27/emacs-as-default-editor-for-git</id>
+    <content type="html"><![CDATA[<p>By default Git uses vi on Mac OS X. Since I am using Emacs as my
+favorite text editor, I want to use Emacs for editing my commit
+messages in Git too. I had just to run the following command:</p>
+
+<p><code>
+git config --global core.editor emacs
+</code></p>
+
+<p>The problem is, this will point Git to the Emacs coming with Mac OS X,
+which is a very old version. Since I am using Emacs 24 through
+<a href="http://mxcl.github.com/homebrew/">Homebrew</a>, I had to run the
+following command instead:</p>
+
+<p><code>
+git config --global core.editor /usr/local/bin/emacs
+</code></p>
+
+<p>Now when I am committing with <em>git commit</em>, Emacs will be opend in my
+Terminal. I can edit the commit message and as in any other editor
+too, I save (<em>C-x C-s</em>) the message and close (<em>C-x C-c</em>) the
+editor. Is the commit message empty, the commit will be abort.</p>
+]]></content>
+  </entry>
+  
+</feed>

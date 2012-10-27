@@ -9,9 +9,9 @@
   <meta name="author" content="Jan Ehrhardt">
 
   
-  <meta name="description" content="If you are forced to use SVN, you can still use Git. Git is a great
-SVN client. When your
-SVN repository has multiple branches and you must work on &hellip;">
+  <meta name="description" content="By default Git uses vi on Mac OS X. Since I am using Emacs as my
+favorite text editor, I want to use Emacs for editing my commit
+messages in Git too &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,62 @@ SVN repository has multiple branches and you must work on &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/27/emacs-as-default-editor-for-git/">Emacs as default editor for Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-27T12:17:00+02:00" pubdate data-updated="true">Oct 27<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>By default Git uses vi on Mac OS X. Since I am using Emacs as my
+favorite text editor, I want to use Emacs for editing my commit
+messages in Git too. I had just to run the following command:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git config --global core.editor emacs</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The problem is, this will point Git to the Emacs coming with Mac OS X,
+which is a very old version. Since I am using Emacs 24 through
+<a href="http://mxcl.github.com/homebrew/">Homebrew</a>, I had to run the
+following command instead:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git config --global core.editor /usr/local/bin/emacs</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now when I am committing with <em>git commit</em>, Emacs will be opend in my
+Terminal. I can edit the commit message and as in any other editor
+too, I save (<em>C-x C-s</em>) the message and close (<em>C-x C-c</em>) the
+editor. Is the commit message empty, the commit will be abort.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -551,55 +607,6 @@ comes with. Do the developers not care about readability?</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support/">First steps with Groovy&#8217;s invokedynamic support</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-08T07:29:00+02:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>It is not really new, but
-<a href="http://docs.codehaus.org/display/GROOVY/2012/06/28/Groovy+2.0+released">Groovy 2.0 is out</a>.
-There is even a version
-<a href="http://docs.codehaus.org/display/GROOVY/2012/06/28/Groovy+2.0+released">2.0.1 released</a>,
-which only fixes some bugs. One of the new features introduced with
-version 2.0 is support for invokedynamic. But it is not used by
-default, instead you have to activate it. But there is only few
-documentation and it is spread over the web. So how do we use
-invokedynamic in our code?</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/08/08/first-steps-with-groovys-invokedynamic-support/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -615,6 +622,10 @@ invokedynamic in our code?</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/27/emacs-as-default-editor-for-git/">Emacs as default editor for Git</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/25/git-as-svn-client-with-multiple-branches/">Git as SVN client with multiple branches</a>
       </li>
     
@@ -628,10 +639,6 @@ invokedynamic in our code?</p>
     
       <li class="post">
         <a href="/blog/2012/10/16/we-do-not-trust-our-unit-tests/">We do not trust our unit tests</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/06/discovery-of-java-land/">Discovery of Java Land</a>
       </li>
     
   </ul>
