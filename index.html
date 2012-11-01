@@ -9,9 +9,11 @@
   <meta name="author" content="Jan Ehrhardt">
 
   
-  <meta name="description" content="By default Git uses vi on Mac OS X. Since I am using Emacs as my
-favorite text editor, I want to use Emacs for editing my commit
-messages in Git too &hellip;">
+  <meta name="description" content="In Java land almost everyone is using frameworks like
+Spring or
+Guice to do
+Dependency Injection.
+Sadly these frameworks are able to deal with code &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +80,108 @@ messages in Git too &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/01/why-does-your-java-class-have-no-constructors/">Why does your Java class have no constructors?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-01T08:28:00+01:00" pubdate data-updated="true">Nov 1<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In Java land almost everyone is using frameworks like
+<a href="http://www.springsource.org">Spring</a> or
+<a href="https://code.google.com/p/google-guice/">Guice</a> to do
+<a href="https://en.wikipedia.org/wiki/Dependency_injection">Dependency Injection</a>.
+Sadly these frameworks are able to deal with code like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nd">@Inject</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">GreetingProvider</span> <span class="n">greetingProvider</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>These frameworks use the power of Java&#8217;s reflection API to set a
+private variable to a value at runtime without a constructor or a
+setter method. Since this reduces the number of lines, many developers
+are using this feature frequently. So what is wrong with this?</p>
+
+<p>First it makes you addicted to some framework or library. You cannot
+run this code without a framework handling the dependency. Even your
+unit test requires something do deal with this. This is <strong>no</strong> valid
+Java code!</p>
+
+<p>The second point is, it results in very bad API design. Like it or
+not, each class you are writing has an external API and you should
+always care about the design of this API. In the above case nobody
+knows about your API, because it is hidden. The real API includes a
+dependency to a Dependency Injection framework, but this fact is not
+made explicit in the API. People are telling me, that they do not like
+dynamic languages, since there are no declared types in the method
+signature. But then the same people are writing code like above.</p>
+
+<p>But how can we do better?</p>
+
+<p>There is only one way, you should do Dependency Injection. Use a
+constructor! This results in code like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">GreetingProvider</span> <span class="n">greetingProvider</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Inject</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">HelloWorld</span><span class="o">(</span><span class="n">GreetingProvider</span> <span class="n">greetingProvider</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="o">.</span><span class="na">greetingProvider</span> <span class="o">=</span> <span class="n">greetingProvider</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But if you think there is to much code, learn and use another laguage!
+The same in Scala:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">class</span> <span class="nc">HelloWorld</span><span class="o">(</span><span class="n">greetingProvider</span><span class="k">:</span> <span class="kt">GreetingProvider</span><span class="o">)</span> <span class="o">{}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -560,53 +664,6 @@ tests. So this is about writing better test code.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/08/27/be-fair-to-scala/">Be fair to Scala, do not expect a better Java</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-27T12:43:00+02:00" pubdate data-updated="true">Aug 27<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To some Java developers Scala has become an alternative to Java as a
-programming language. So they started learning it and do the first
-steps in writing some Scala code. To most of them the next step might
-be the first contact with a Scala library and hopefully a Scala test
-framework. But right after the first contact, I here them
-screaming. Oh my god, this library uses all the tricky features Scala
-comes with. Do the developers not care about readability?</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/08/27/be-fair-to-scala/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -622,6 +679,10 @@ comes with. Do the developers not care about readability?</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/11/01/why-does-your-java-class-have-no-constructors/">Why does your Java class have no constructors?</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/27/emacs-as-default-editor-for-git/">Emacs as default editor for Git</a>
       </li>
     
@@ -635,10 +696,6 @@ comes with. Do the developers not care about readability?</p>
     
       <li class="post">
         <a href="/blog/2012/10/22/successful-devops-keep-their-focus-on-applications/">Successful DevOps keep their focus on applications</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/16/we-do-not-trust-our-unit-tests/">We do not trust our unit tests</a>
       </li>
     
   </ul>
