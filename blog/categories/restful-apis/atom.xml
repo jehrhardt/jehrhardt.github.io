@@ -4,7 +4,7 @@
   <title><![CDATA[Category: RESTful APIs | derjan]]></title>
   <link href="http://derjan.io/blog/categories/restful-apis/atom.xml" rel="self"/>
   <link href="http://derjan.io/"/>
-  <updated>2012-11-26T09:17:09+01:00</updated>
+  <updated>2012-11-26T20:26:29+01:00</updated>
   <id>http://derjan.io/</id>
   <author>
     <name><![CDATA[Jan Ehrhardt]]></name>
@@ -59,9 +59,8 @@ simple example:</p>
 ```</p>
 
 <p>In the above JSON snippet the link object has a <em>rel</em> attribute. To
-cache that link create a key from a user identifier and the rel
-attribute's value inbox and store the URL. Now you can render some
-HTML with a different link:</p>
+cache that link create a key from the rel attribute's value inbox and
+store the URL. Now you can render some HTML with a different link:</p>
 
 <p><code>html
 &lt;a href="http://derjan.io/foo/inbox/"&gt;My Foo Inbox&lt;/a&gt;
