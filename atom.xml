@@ -4,7 +4,7 @@
   <title><![CDATA[derjan]]></title>
   <link href="http://derjan.io/atom.xml" rel="self"/>
   <link href="http://derjan.io/"/>
-  <updated>2012-11-01T08:28:50+01:00</updated>
+  <updated>2012-11-26T09:17:09+01:00</updated>
   <id>http://derjan.io/</id>
   <author>
     <name><![CDATA[Jan Ehrhardt]]></name>
@@ -12,6 +12,72 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Making stateless applications deal with RESTful state]]></title>
+    <link href="http://derjan.io/blog/2012/11/26/making-stateless-applications-deal-with-restful-state/"/>
+    <updated>2012-11-26T09:17:00+01:00</updated>
+    <id>http://derjan.io/blog/2012/11/26/making-stateless-applications-deal-with-restful-state</id>
+    <content type="html"><![CDATA[<p>One of the core priciples of RESTful APIs is being stateless on the
+server. Instead of putting it on the server state is transfered to the
+client. We do not talk about state as it might appear in many stateful
+applications. The state in RESTful APIs is represented through
+hyperlinks.</p>
+
+<p>Hyperlinks allow applications to make navigation similar to
+browsers. When you are developing a mobile application, your buttons
+should behave like links in a browser. Your application should not
+build the URLs to call. When the button is clicked it should call an
+URL from a link. The state where the user is and how to get where he
+wants is stored in the client by associating URLs from the server with
+buttons.</p>
+
+<p>When you are developing a web application, that renders HTML on the
+server and you want to integrate some third party RESTful API, you
+might have a problem. You can not store the links anywhere as long as
+you want to keep your web application stateless. This constraint would
+force you to start at the root URL and navigate down through a link
+structure every request.</p>
+
+<p>The solution is a simple key value cache. You can use it to store
+state access. This does not mean you are caching where the user
+currently is in your application, instead you are caching the links. A
+simple example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="nt">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;http://api.foo.com/inbox/&quot;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;inbox&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">]</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the above JSON snippet the link object has a <em>rel</em> attribute. To
+cache that link create a key from a user identifier and the rel
+attribute&#8217;s value inbox and store the URL. Now you can render some
+HTML with a different link:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/foo/inbox/&quot;</span><span class="nt">&gt;</span>My Foo Inbox<span class="nt">&lt;/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Once the user clicks the link, you can simply grep the URL from the
+cache and call it. No need for starting at <em>http://api.foo.com</em> and
+following the links down to one with rel inbox.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Why does your Java class have no constructors?]]></title>

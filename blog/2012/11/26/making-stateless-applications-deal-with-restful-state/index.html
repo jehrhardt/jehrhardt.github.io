@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: TDD - derjan</title>
+  <title>Making stateless applications deal with RESTful state - derjan</title>
   <meta name="author" content="Jan Ehrhardt">
 
   
-  <meta name="description" content="Category: TDD">
+  <meta name="description" content="One of the core priciples of RESTful APIs is being stateless on the
+server. Instead of putting it on the server state is transfered to the
+client. We &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://derjan.ioblog/categories/tdd/">
+  <link rel="canonical" href="http://derjan.io/blog/2012/11/26/making-stateless-applications-deal-with-restful-state/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -75,64 +77,148 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: TDD</h1>
+    
+      <h1 class="entry-title">Making stateless applications deal with RESTful state</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-26T09:17:00+01:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>One of the core priciples of RESTful APIs is being stateless on the
+server. Instead of putting it on the server state is transfered to the
+client. We do not talk about state as it might appear in many stateful
+applications. The state in RESTful APIs is represented through
+hyperlinks.</p>
 
-  
-  <h2>2012</h2>
+<p>Hyperlinks allow applications to make navigation similar to
+browsers. When you are developing a mobile application, your buttons
+should behave like links in a browser. Your application should not
+build the URLs to call. When the button is clicked it should call an
+URL from a link. The state where the user is and how to get where he
+wants is stored in the client by associating URLs from the server with
+buttons.</p>
 
-<article>
-  
-<h1><a href="/blog/2012/10/16/we-do-not-trust-our-unit-tests/">We do not trust our unit tests</a></h1>
-<time datetime="2012-10-16T07:33:00+02:00" pubdate><span class='month'>Oct</span> <span class='day'>16</span> <span class='year'>2012</span></time>
+<p>When you are developing a web application, that renders HTML on the
+server and you want to integrate some third party RESTful API, you
+might have a problem. You can not store the links anywhere as long as
+you want to keep your web application stateless. This constraint would
+force you to start at the root URL and navigate down through a link
+structure every request.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/tdd/'>TDD</a></span>
-</footer>
+<p>The solution is a simple key value cache. You can use it to store
+state access. This does not mean you are caching where the user
+currently is in your application, instead you are caching the links. A
+simple example:</p>
 
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/09/11/applying-the-test-automation-pyramid-to-the-real-world/">Applying the test automation pyramid to the real world</a></h1>
-<time datetime="2012-09-11T07:47:00+02:00" pubdate><span class='month'>Sep</span> <span class='day'>11</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/agile-development/'>Agile Development</a>, <a class='category' href='/blog/categories/best-practices/'>Best Practices</a>, <a class='category' href='/blog/categories/tdd/'>TDD</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/08/31/dont-miss-to-write-good-unit-tests/">Don't miss to write good unit tests</a></h1>
-<time datetime="2012-08-31T10:46:00+02:00" pubdate><span class='month'>Aug</span> <span class='day'>31</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/clean-code/'>Clean Code</a>, <a class='category' href='/blog/categories/tdd/'>TDD</a></span>
-</footer>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="nt">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;http://api.foo.com/inbox/&quot;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;inbox&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">]</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-</article>
+<p>In the above JSON snippet the link object has a <em>rel</em> attribute. To
+cache that link create a key from a user identifier and the rel
+attribute&#8217;s value inbox and store the URL. Now you can render some
+HTML with a different link:</p>
 
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/foo/inbox/&quot;</span><span class="nt">&gt;</span>My Foo Inbox<span class="nt">&lt;/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Once the user clicks the link, you can simply grep the URL from the
+cache and call it. No need for starting at <em>http://api.foo.com</em> and
+following the links down to one with rel inbox.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Jan Ehrhardt</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-26T09:17:00+01:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/restful-apis/'>RESTful APIs</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://derjan.io/blog/2012/11/26/making-stateless-applications-deal-with-restful-state/" data-via="derjan" data-counturl="http://derjan.io/blog/2012/11/26/making-stateless-applications-deal-with-restful-state/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/01/why-does-your-java-class-have-no-constructors/" title="Previous Post: Why does your Java class have no constructors?">&laquo; Why does your Java class have no constructors?</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -233,7 +319,10 @@
       var disqus_shortname = 'derjanio';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://derjan.io/blog/2012/11/26/making-stateless-applications-deal-with-restful-state/';
+        var disqus_url = 'http://derjan.io/blog/2012/11/26/making-stateless-applications-deal-with-restful-state/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

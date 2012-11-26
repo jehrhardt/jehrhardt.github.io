@@ -9,11 +9,9 @@
   <meta name="author" content="Jan Ehrhardt">
 
   
-  <meta name="description" content="In Java land almost everyone is using frameworks like
-Spring or
-Guice to do
-Dependency Injection.
-Sadly these frameworks are able to deal with code &hellip;">
+  <meta name="description" content="One of the core priciples of RESTful APIs is being stateless on the
+server. Instead of putting it on the server state is transfered to the
+client. We &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +78,99 @@ Sadly these frameworks are able to deal with code &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/26/making-stateless-applications-deal-with-restful-state/">Making stateless applications deal with RESTful state</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-26T09:17:00+01:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>One of the core priciples of RESTful APIs is being stateless on the
+server. Instead of putting it on the server state is transfered to the
+client. We do not talk about state as it might appear in many stateful
+applications. The state in RESTful APIs is represented through
+hyperlinks.</p>
+
+<p>Hyperlinks allow applications to make navigation similar to
+browsers. When you are developing a mobile application, your buttons
+should behave like links in a browser. Your application should not
+build the URLs to call. When the button is clicked it should call an
+URL from a link. The state where the user is and how to get where he
+wants is stored in the client by associating URLs from the server with
+buttons.</p>
+
+<p>When you are developing a web application, that renders HTML on the
+server and you want to integrate some third party RESTful API, you
+might have a problem. You can not store the links anywhere as long as
+you want to keep your web application stateless. This constraint would
+force you to start at the root URL and navigate down through a link
+structure every request.</p>
+
+<p>The solution is a simple key value cache. You can use it to store
+state access. This does not mean you are caching where the user
+currently is in your application, instead you are caching the links. A
+simple example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="nt">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;http://api.foo.com/inbox/&quot;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;inbox&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">]</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the above JSON snippet the link object has a <em>rel</em> attribute. To
+cache that link create a key from a user identifier and the rel
+attribute&#8217;s value inbox and store the URL. Now you can render some
+HTML with a different link:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/foo/inbox/&quot;</span><span class="nt">&gt;</span>My Foo Inbox<span class="nt">&lt;/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Once the user clicks the link, you can simply grep the URL from the
+cache and call it. No need for starting at <em>http://api.foo.com</em> and
+following the links down to one with rel inbox.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -612,58 +703,6 @@ true. It fits perfectly, if you understand it right.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/08/31/dont-miss-to-write-good-unit-tests/">Don&#8217;t miss to write good unit tests</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-31T10:46:00+02:00" pubdate data-updated="true">Aug 31<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>It is not enough for today&#8217;s software developers to know their
-programming language well. There are further skills, that more and
-more companies are expecting from there employees. One of the most
-important is
-<a href="https://en.wikipedia.org/wiki/Test-driven_development">Test Driven Development</a>
-(TDD). This is not an introduction to TDD. If you want to learn it, I
-recommend <a href="https://twitter.com/unclebobmartin">Uncle Bob&#8217;s</a> awesome
-<a href="http://www.cleancoders.com/">Clean Code Videos</a> (Episode 6 - TDD) or
-simply <a href="https://www.google.com/search?q=tdd+tutorial">ask Google</a> for
-it. But many developers are writing bad code and applying TDD does not
-make them writing good code. Instead it makes them also writing bad
-tests. So this is about writing better test code.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/08/31/dont-miss-to-write-good-unit-tests/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -679,6 +718,10 @@ tests. So this is about writing better test code.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/11/26/making-stateless-applications-deal-with-restful-state/">Making stateless applications deal with RESTful state</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/11/01/why-does-your-java-class-have-no-constructors/">Why does your Java class have no constructors?</a>
       </li>
     
@@ -692,10 +735,6 @@ tests. So this is about writing better test code.</p>
     
       <li class="post">
         <a href="/blog/2012/10/23/you-should-not-use-gwt/">You should not use GWT</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/22/successful-devops-keep-their-focus-on-applications/">Successful DevOps keep their focus on applications</a>
       </li>
     
   </ul>
