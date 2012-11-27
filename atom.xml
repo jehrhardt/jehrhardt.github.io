@@ -4,7 +4,7 @@
   <title><![CDATA[derjan]]></title>
   <link href="http://derjan.io/atom.xml" rel="self"/>
   <link href="http://derjan.io/"/>
-  <updated>2012-11-26T20:26:29+01:00</updated>
+  <updated>2012-11-27T04:26:35+01:00</updated>
   <id>http://derjan.io/</id>
   <author>
     <name><![CDATA[Jan Ehrhardt]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[There is no need for Spring in Scala code]]></title>
+    <link href="http://derjan.io/blog/2012/11/27/there-is-no-need-for-spring-in-scala-code/"/>
+    <updated>2012-11-27T04:26:00+01:00</updated>
+    <id>http://derjan.io/blog/2012/11/27/there-is-no-need-for-spring-in-scala-code</id>
+    <content type="html"><![CDATA[<p>Why are Java developers using Spring in so many applications? There
+are plenty of reasons today, but one of the most important is to do
+Dependency Injection. There are good reasons to do Dependency
+Injection in your Java Code, but the most important is testing.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Butler</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">GreetingRepository</span> <span class="n">greetingRepository</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GreetingRepository</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>When we want to write a unit test for the above code, there is no way
+to mock our <em>GreetingRepository</em> variable. Dependency Injection solves
+this problem, by putting the call of the constructor outside the
+class. This allows us to inject a mock object in our unit tests.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Butler</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">GreetingRepository</span> <span class="n">greetingRepository</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">Butler</span><span class="o">(</span><span class="n">GreetingRepository</span> <span class="n">greetingRepository</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="o">.</span><span class="na">greetingRepsitory</span> <span class="o">=</span> <span class="n">greetingRepository</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In our production code, we would probably use Spring or if we want to
+be cool Google Guice to instantiate the <em>Butler</em> class and resolve
+it&#8217;s dependency. In Scala we would not!</p>
+
+<p>Scala comes with a lot of language features we should miss in
+Java. One is default values for parameters.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">class</span> <span class="nc">Butler</span><span class="o">(</span><span class="n">greetingRepository</span><span class="k">:</span> <span class="kt">GreetingRepository</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GreetingRepository</span><span class="o">())</span> <span class="o">{}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now our Scala butler can be instantiated in two ways. In our
+production code, we simply use the constructor without
+arguments. Scala will use the default value instead. In our unit
+tests, we can instatiate the class and explicitly put a mock object in
+the constructor call.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Making stateless applications deal with RESTful state]]></title>

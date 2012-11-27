@@ -5,13 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Git as SVN client with multiple branches - derjan</title>
+  <title>There is no need for Spring in Scala code - derjan</title>
   <meta name="author" content="Jan Ehrhardt">
 
   
-  <meta name="description" content="If you are forced to use SVN, you can still use Git. Git is a great
-SVN client. When your
-SVN repository has multiple branches and you must work on &hellip;">
+  <meta name="description" content="Why are Java developers using Spring in so many applications? There
+are plenty of reasons today, but one of the most important is to do
+Dependency &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@ SVN repository has multiple branches and you must work on &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://derjan.io/blog/2012/10/25/git-as-svn-client-with-multiple-branches/">
+  <link rel="canonical" href="http://derjan.io/blog/2012/11/27/there-is-no-need-for-spring-in-scala-code/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -81,7 +81,7 @@ SVN repository has multiple branches and you must work on &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Git as SVN client with multiple branches</h1>
+      <h1 class="entry-title">There is no need for Spring in Scala code</h1>
     
     
       <p class="meta">
@@ -97,47 +97,66 @@ SVN repository has multiple branches and you must work on &hellip;">
   
 
 
-<time datetime="2012-10-25T10:45:00+02:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
+<time datetime="2012-11-27T04:26:00+01:00" pubdate data-updated="true">Nov 27<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>If you are forced to use SVN, you can still use Git. Git is a great
-<a href="http://blog.tfnico.com/search/label/git-svn">SVN client</a>. When your
-SVN repository has multiple branches and you must work on them, Git
-can also handle this.</p>
+<div class="entry-content"><p>Why are Java developers using Spring in so many applications? There
+are plenty of reasons today, but one of the most important is to do
+Dependency Injection. There are good reasons to do Dependency
+Injection in your Java Code, but the most important is testing.</p>
 
-<p>First you must define a new SVN remote in your Git repository. When
-you look into the file <em>.git/config</em>, you will find the following:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[svn-remote "svn"]
-</span><span class='line'>        url = svn+ssh://my-svn-repo
-</span><span class='line'>        fetch = :refs/remotes/git-svn</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Butler</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">GreetingRepository</span> <span class="n">greetingRepository</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GreetingRepository</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>This is the definition of the default SVN remote created by <em>git svn
-clone svn+ssh://my-svn-repo</em>. You can simply add the following bellow
-this default remote.</p>
+<p>When we want to write a unit test for the above code, there is no way
+to mock our <em>GreetingRepository</em> variable. Dependency Injection solves
+this problem, by putting the call of the constructor outside the
+class. This allows us to inject a mock object in our unit tests.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[svn-remote "svn-second-branch"]
-</span><span class='line'>        url = svn+ssh://my-second-svn-branch
-</span><span class='line'>        fetch = :refs/remotes/git-svn-second-branch</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Butler</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">GreetingRepository</span> <span class="n">greetingRepository</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">Butler</span><span class="o">(</span><span class="n">GreetingRepository</span> <span class="n">greetingRepository</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="o">.</span><span class="na">greetingRepsitory</span> <span class="o">=</span> <span class="n">greetingRepository</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>This adds a new SVN remote named <em>svn-second-branch</em> once you have
-fetched it with <em>git svn fetch svn-second-branch</em>, it will be
-available in Git with the name <em>git-svn-second-branch</em>.</p>
+<p>In our production code, we would probably use Spring or if we want to
+be cool Google Guice to instantiate the <em>Butler</em> class and resolve
+it&#8217;s dependency. In Scala we would not!</p>
 
-<p>If you want to ckeck it out, run <em>git checkout git-svn-second-branch
--b my-local-branch</em>.</p>
+<p>Scala comes with a lot of language features we should miss in
+Java. One is default values for parameters.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">class</span> <span class="nc">Butler</span><span class="o">(</span><span class="n">greetingRepository</span><span class="k">:</span> <span class="kt">GreetingRepository</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GreetingRepository</span><span class="o">())</span> <span class="o">{}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now our Scala butler can be instantiated in two ways. In our
+production code, we simply use the constructor without
+arguments. Scala will use the default value instead. In our unit
+tests, we can instatiate the class and explicitly put a mock object in
+the constructor call.</p>
 </div>
 
 
@@ -160,12 +179,12 @@ available in Git with the name <em>git-svn-second-branch</em>.</p>
   
 
 
-<time datetime="2012-10-25T10:45:00+02:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
+<time datetime="2012-11-27T04:26:00+01:00" pubdate data-updated="true">Nov 27<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/svn/'>SVN</a>
+    <a class='category' href='/blog/categories/dependency-injection/'>Dependency Injection</a>, <a class='category' href='/blog/categories/scala/'>Scala</a>
   
 </span>
 
@@ -174,7 +193,7 @@ available in Git with the name <em>git-svn-second-branch</em>.</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://derjan.io/blog/2012/10/25/git-as-svn-client-with-multiple-branches/" data-via="derjan" data-counturl="http://derjan.io/blog/2012/10/25/git-as-svn-client-with-multiple-branches/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://derjan.io/blog/2012/11/27/there-is-no-need-for-spring-in-scala-code/" data-via="derjan" data-counturl="http://derjan.io/blog/2012/11/27/there-is-no-need-for-spring-in-scala-code/" >Tweet</a>
   
   
   
@@ -183,10 +202,8 @@ available in Git with the name <em>git-svn-second-branch</em>.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/10/23/you-should-not-use-gwt/" title="Previous Post: You should not use GWT">&laquo; You should not use GWT</a>
+        <a class="basic-alignment left" href="/blog/2012/11/26/making-stateless-applications-deal-with-restful-state/" title="Previous Post: Making stateless applications deal with RESTful state">&laquo; Making stateless applications deal with RESTful state</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/10/27/emacs-as-default-editor-for-git/" title="Next Post: Emacs as default editor for Git">Emacs as default editor for Git &raquo;</a>
       
     </p>
   </footer>
@@ -298,8 +315,8 @@ available in Git with the name <em>git-svn-second-branch</em>.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://derjan.io/blog/2012/10/25/git-as-svn-client-with-multiple-branches/';
-        var disqus_url = 'http://derjan.io/blog/2012/10/25/git-as-svn-client-with-multiple-branches/';
+        var disqus_identifier = 'http://derjan.io/blog/2012/11/27/there-is-no-need-for-spring-in-scala-code/';
+        var disqus_url = 'http://derjan.io/blog/2012/11/27/there-is-no-need-for-spring-in-scala-code/';
         var disqus_script = 'embed.js';
       
     (function () {

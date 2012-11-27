@@ -9,9 +9,9 @@
   <meta name="author" content="Jan Ehrhardt">
 
   
-  <meta name="description" content="One of the core priciples of RESTful APIs is being stateless on the
-server. Instead of putting it on the server state is transfered to the
-client. We &hellip;">
+  <meta name="description" content="Why are Java developers using Spring in so many applications? There
+are plenty of reasons today, but one of the most important is to do
+Dependency &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,94 @@ client. We &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/27/there-is-no-need-for-spring-in-scala-code/">There is no need for Spring in Scala code</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-27T04:26:00+01:00" pubdate data-updated="true">Nov 27<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Why are Java developers using Spring in so many applications? There
+are plenty of reasons today, but one of the most important is to do
+Dependency Injection. There are good reasons to do Dependency
+Injection in your Java Code, but the most important is testing.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Butler</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">GreetingRepository</span> <span class="n">greetingRepository</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GreetingRepository</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>When we want to write a unit test for the above code, there is no way
+to mock our <em>GreetingRepository</em> variable. Dependency Injection solves
+this problem, by putting the call of the constructor outside the
+class. This allows us to inject a mock object in our unit tests.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Butler</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">GreetingRepository</span> <span class="n">greetingRepository</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">Butler</span><span class="o">(</span><span class="n">GreetingRepository</span> <span class="n">greetingRepository</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="o">.</span><span class="na">greetingRepsitory</span> <span class="o">=</span> <span class="n">greetingRepository</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In our production code, we would probably use Spring or if we want to
+be cool Google Guice to instantiate the <em>Butler</em> class and resolve
+it&#8217;s dependency. In Scala we would not!</p>
+
+<p>Scala comes with a lot of language features we should miss in
+Java. One is default values for parameters.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">class</span> <span class="nc">Butler</span><span class="o">(</span><span class="n">greetingRepository</span><span class="k">:</span> <span class="kt">GreetingRepository</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GreetingRepository</span><span class="o">())</span> <span class="o">{}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now our Scala butler can be instantiated in two ways. In our
+production code, we simply use the constructor without
+arguments. Scala will use the default value instead. In our unit
+tests, we can instatiate the class and explicitly put a mock object in
+the constructor call.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -650,58 +738,6 @@ some basic priciples might improve your APIs a lot.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/09/11/applying-the-test-automation-pyramid-to-the-real-world/">Applying the test automation pyramid to the real world</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-11T07:47:00+02:00" pubdate data-updated="true">Sep 11<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img class="right" src="/media/test-pyramid-fowler.png" width="373" height="540" title="Test Pyramid by Martin Fowler" alt="Test Pyramid by Martin Fowler"></p>
-
-<p>You probaply heard of the test automation pyramid, which is a great
-idea to make automated testing work in an agile development
-environment. The image copied from <a href="https://twitter.com/martinfowler">Martin Fowler</a> shows it. He has also
-<a href="http://martinfowler.com/bliki/TestPyramid.html">explains the pyramid</a>
-pretty well.</p>
-
-<p>The pyramid has three layers UI, Service and Unit tests. Theses layers
-map well to standard web applications.  But in more complex systems
-this simple model does not fit exactly at first view. But that is not
-true. It fits perfectly, if you understand it right.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/09/11/applying-the-test-automation-pyramid-to-the-real-world/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -717,6 +753,10 @@ true. It fits perfectly, if you understand it right.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/11/27/there-is-no-need-for-spring-in-scala-code/">There is no need for Spring in Scala code</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/11/26/making-stateless-applications-deal-with-restful-state/">Making stateless applications deal with RESTful state</a>
       </li>
     
@@ -730,10 +770,6 @@ true. It fits perfectly, if you understand it right.</p>
     
       <li class="post">
         <a href="/blog/2012/10/25/git-as-svn-client-with-multiple-branches/">Git as SVN client with multiple branches</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/23/you-should-not-use-gwt/">You should not use GWT</a>
       </li>
     
   </ul>
