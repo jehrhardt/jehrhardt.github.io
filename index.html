@@ -9,9 +9,11 @@
   <meta name="author" content="Jan Ehrhardt">
 
   
-  <meta name="description" content="Homebrew is a nice package manager
-and you can install Grails via Homebrew,
-too. Since each Grails project is bound to a specific version of the &hellip;">
+  <meta name="description" content="I use Emacs as my default text editor for years now. Similar to
+oh-my-zsh there is a simple setup
+for Emacs. 1
+2
+brew install emacs --cocoa --use-git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +80,75 @@ too. Since each Grails project is bound to a specific version of the &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/01/08/emacs-as-primary-text-editor-for-lazy-developers/">Emacs as primary text editor for lazy developers</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-08T08:30:00+01:00" pubdate data-updated="true">Jan 8<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I use Emacs as my default text editor for years now. Similar to
+<a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> there is a simple setup
+for Emacs.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>brew install emacs --cocoa --use-git-head --HEAD
+</span><span class='line'>curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>On Mac OS X this will install the latest version of Emacs and
+<a href="http://batsov.com/prelude/">Emacs Prelude</a>. Prelude is a ready to use
+configuration for Emacs, that gives you all you need as a programmer.</p>
+
+<p>Emacs will load its whole configuration, when you start it. This makes
+startup very slow, especially when you use a lot of modes like in Prelude.
+Speed up Emacs start time can be done by running it as daemon.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>emacs --daemon
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you can connect to the local Emacs server with the <em>emacsclient</em> command:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>emacsclient -t hello-world.txt <span class="c"># opens Emacs and the file in your terminal</span>
+</span><span class='line'>emacsclient -c                 <span class="c"># opens Emacs in a seperate window</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Give it a try and learn loving it!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -754,55 +825,6 @@ and changing code.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/06/discovery-of-java-land/">Discovery of Java Land</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-06T19:16:00+02:00" pubdate data-updated="true">Oct 6<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I am developing Java code for many years now and know how to do
-this. But some years ago, I started to look what else happens in the
-programming world. I figured out, that other developers are not just
-using other programming languages, they are also using other tools and
-come with another mindset. While I learned a lot about how others do
-their work, I found more Java developers looking outsite the Java
-world in the last months and they were wondering what happens
-there. But why is the the Java world culturally so isolated, that even
-experienced developers struggle with the tools everyone else uses?</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/10/06/discovery-of-java-land/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -818,6 +840,10 @@ experienced developers struggle with the tools everyone else uses?</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/01/08/emacs-as-primary-text-editor-for-lazy-developers/">Emacs as primary text editor for lazy developers</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/12/11/multiple-versions-of-grails-with-homebrew/">Multiple versions of Grails with Homebrew</a>
       </li>
     
@@ -831,10 +857,6 @@ experienced developers struggle with the tools everyone else uses?</p>
     
       <li class="post">
         <a href="/blog/2012/11/01/why-does-your-java-class-have-no-constructors/">Why does your Java class have no constructors?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/27/emacs-as-default-editor-for-git/">Emacs as default editor for Git</a>
       </li>
     
   </ul>
@@ -896,7 +918,7 @@ experienced developers struggle with the tools everyone else uses?</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Jan Ehrhardt -
+  Copyright &copy; 2013 - Jan Ehrhardt -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
