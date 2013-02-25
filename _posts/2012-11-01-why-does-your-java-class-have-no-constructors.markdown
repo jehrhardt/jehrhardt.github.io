@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "Why does your Java class have no constructors?"
-staus: publish
 date: 2012-11-01 08:28
-comments: true
 categories:
 - Java
 - Clean Code

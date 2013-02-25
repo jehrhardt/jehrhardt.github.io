@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "Spring and JSR 330 scopes"
-status: publish
 date: 2011-10-18 07:09
-comments: false
 categories:
 - Java
 ---

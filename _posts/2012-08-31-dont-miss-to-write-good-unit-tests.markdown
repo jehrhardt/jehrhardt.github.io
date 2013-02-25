@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "Don't miss to write good unit tests"
-status: publish
 date: 2012-08-31 10:46
-comments: true
 categories:
 - Clean Code
 - TDD

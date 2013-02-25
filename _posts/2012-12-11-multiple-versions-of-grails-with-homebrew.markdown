@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "Multiple versions of Grails with Homebrew"
-status: publish
 date: 2012-12-11 11:03
-comments: true
 categories:
 - Mac OS X
 - Grails

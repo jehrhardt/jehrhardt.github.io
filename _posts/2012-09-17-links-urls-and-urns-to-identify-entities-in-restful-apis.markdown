@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "Links, URLs and URNs to identify entities in RESTful APIs"
-status: publish
 date: 2012-09-17 23:30
-comments: true
 categories:
 - RESTful APIs
 ---

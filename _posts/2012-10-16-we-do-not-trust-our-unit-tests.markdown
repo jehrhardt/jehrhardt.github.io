@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "We do not trust our unit tests"
-status: publish
 date: 2012-10-16 07:33
-comments: true
 categories:
 - TDD
 ---

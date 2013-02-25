@@ -2,9 +2,7 @@
 layout: post
 title: "You should not use GWT"
 date: 2012-10-23 10:25
-status: publish
-comments: true
-categories: 
+categories:
 - GWT
 - Web Development
 ---

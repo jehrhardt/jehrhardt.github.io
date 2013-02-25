@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "There is no need for Spring in Scala code"
-status: publish
 date: 2012-11-27 04:26
-comments: true
 categories:
 - Dependency Injection
 - Scala

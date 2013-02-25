@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "Emacs as primary text editor for lazy developers"
-status: publish
 date: 2013-01-08 08:30
-comments: true
 categories:
 - Emacs
 ---

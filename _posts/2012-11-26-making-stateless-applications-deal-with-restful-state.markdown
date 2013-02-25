@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "Making stateless applications deal with RESTful state"
-status: publish
 date: 2012-11-26 09:17
-comments: true
 categories:
 - RESTful APIs
 ---

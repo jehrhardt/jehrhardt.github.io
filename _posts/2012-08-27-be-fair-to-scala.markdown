@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "Be fair to Scala, do not expect a better Java"
-status: publish
 date: 2012-08-27 12:43
-comments: true
 categories:
 - Scala
 ---

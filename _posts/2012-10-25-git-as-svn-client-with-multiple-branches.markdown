@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "Git as SVN client with multiple branches"
-status: publish
 date: 2012-10-25 10:45
-comments: true
 categories:
 - Git
 - SVN

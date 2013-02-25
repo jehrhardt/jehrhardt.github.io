@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "First steps with Groovy's invokedynamic support"
-status: publish
 date: 2012-08-08 07:29
-comments: true
 categories:
 - Groovy
 - Java
