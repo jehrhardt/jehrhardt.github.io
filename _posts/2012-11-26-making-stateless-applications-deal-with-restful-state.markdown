@@ -4,7 +4,7 @@ title: "Making stateless applications deal with RESTful state"
 status: publish
 date: 2012-11-26 09:17
 comments: true
-categories: 
+categories:
 - RESTful APIs
 ---
 
@@ -34,7 +34,7 @@ state access. This does not mean you are caching where the user
 currently is in your application, instead you are caching the links. A
 simple example:
 
-```json
+{% highlight javascript %}
 {
   "links": [
     {
@@ -43,15 +43,15 @@ simple example:
     }
   ]
 }
-```
+{% endhighlight %}
 
 In the above JSON snippet the link object has a _rel_ attribute. To
 cache that link create a key from the rel attribute's value inbox and
 store the URL. Now you can render some HTML with a different link:
 
-```html
+{% highlight html %}
 <a href="/foo/inbox/">My Foo Inbox</a>
-```
+{% endhighlight %}
 
 Once the user clicks the link, you can simply grep the URL from the
 cache and call it. No need for starting at _http://api.foo.com_ and

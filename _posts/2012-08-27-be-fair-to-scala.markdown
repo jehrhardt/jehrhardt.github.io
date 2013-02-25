@@ -16,19 +16,17 @@ framework. But right after the first contact, I here them
 screaming. Oh my god, this library uses all the tricky features Scala
 comes with. Do the developers not care about readability?
 
-<!--more-->
-
 Some lines of Scala code
 ----------
 
 What is the problem in Scala? To understand it, lets take a brief look
 to some Scala code.
 
-```scala
+{% highlight scala %}
 object Application extends App with PathConversion with StringConversion {
   Files.write("log", "Hello world\n", APPEND)
 }
-```
+{% endhighlight %}
 
 This code appends a line to a file. It uses the
 [new file API](http://docs.oracle.com/javase/7/docs/api/java/nio/file/package-summary.html)
@@ -42,7 +40,7 @@ object and a byte[] as parameters. The trick is done in the traits
 _StringConversion_ and _PathConversion_, which provide implicit
 methods to convert Strings.
 
-```scala
+{% highlight scala %}
 trait StringConversion {
   implicit def bytes(text: String) = text.getBytes(Charsets.UTF_8)
 }
@@ -50,7 +48,7 @@ trait StringConversion {
 trait PathConversion {
   implicit def stringAsPath(path: String) = Paths.get(path)
 }
-```
+{% endhighlight %}
 
 The methods in the traits are called implicit, thus the compiler will
 create byte code, that calls these methods. But these calls are not

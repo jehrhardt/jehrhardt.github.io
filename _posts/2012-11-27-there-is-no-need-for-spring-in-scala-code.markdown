@@ -4,7 +4,7 @@ title: "There is no need for Spring in Scala code"
 status: publish
 date: 2012-11-27 04:26
 comments: true
-categories: 
+categories:
 - Dependency Injection
 - Scala
 ---
@@ -14,26 +14,26 @@ are plenty of reasons today, but one of the most important is to do
 Dependency Injection. There are good reasons to do Dependency
 Injection in your Java Code, but the most important is testing.
 
-```java
+{% highlight java %}
 public class Butler {
   private final GreetingRepository greetingRepository = new GreetingRepository();
 }
-```
+{% endhighlight %}
 
 When we want to write a unit test for the above code, there is no way
 to mock our _GreetingRepository_ variable. Dependency Injection solves
 this problem, by putting the call of the constructor outside the
 class. This allows us to inject a mock object in our unit tests.
 
-```java
+{% highlight java %}
 public class Butler {
   private final GreetingRepository greetingRepository;
-  
+
   public Butler(GreetingRepository greetingRepository) {
     this.greetingRepsitory = greetingRepository;
   }
 }
-```
+{% endhighlight %}
 
 In our production code, we would probably use Spring or if we want to
 be cool Google Guice to instantiate the _Butler_ class and resolve
@@ -42,9 +42,9 @@ it's dependency. In Scala we would not!
 Scala comes with a lot of language features we should miss in
 Java. One is default values for parameters.
 
-```scala
+{% highlight scala %}
 class Butler(greetingRepository: GreetingRepository = new GreetingRepository()) {}
-```
+{% endhighlight %}
 
 Now our Scala butler can be instantiated in two ways. In our
 production code, we simply use the constructor without

@@ -4,7 +4,7 @@ title: "Links, URLs and URNs to identify entities in RESTful APIs"
 status: publish
 date: 2012-09-17 23:30
 comments: true
-categories: 
+categories:
 - RESTful APIs
 ---
 
@@ -19,8 +19,6 @@ But how are you dealing with URLs in your API? Are you telling your
 users how to create URLs?  And what is about navigation?  Do your
 users know how to navigate through the data your API offers? Knowing
 some basic priciples might improve your APIs a lot.
-
-<!--more-->
 
 Starting small
 ----------
@@ -41,13 +39,13 @@ developers, we should adapt this awesome concept to our API.
 In JSON based formats hyperlinks can be put into an attribute called
 links, which is an array of link objects. This might look like below.
 
-{% codeblock lang:json %}
+{% highlight javascript %}
 {"links": [
   {"title": "Cool picture",
    "rel": "details",
    "href": "https://example.org/albums/12/photos/13"}
 ]}
-{% endcodeblock %}
+{% endhighlight %}
 
 A mobile app can also show the thumbnails and store locally the URL
 from the link object. When the user tabs with his finger on the image,

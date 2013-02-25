@@ -22,8 +22,6 @@ it. But many developers are writing bad code and applying TDD does not
 make them writing good code. Instead it makes them also writing bad
 tests. So this is about writing better test code.
 
-<!--more-->
-
 Applying simple rules
 ----------
 

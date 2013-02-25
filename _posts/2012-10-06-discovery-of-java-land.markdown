@@ -4,7 +4,7 @@ title: "Discovery of Java Land"
 date: 2012-10-06 19:16
 status: published
 comments: true
-categories: 
+categories:
 - Programming languages
 - Cultural clash
 ---
@@ -18,8 +18,6 @@ their work, I found more Java developers looking outsite the Java
 world in the last months and they were wondering what happens
 there. But why is the the Java world culturally so isolated, that even
 experienced developers struggle with the tools everyone else uses?
-
-<!--more-->
 
 Meeting the clash
 ----------

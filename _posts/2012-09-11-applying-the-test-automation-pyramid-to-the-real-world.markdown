@@ -4,26 +4,22 @@ title: "Applying the test automation pyramid to the real world"
 date: 2012-09-11 7:47
 status: publish
 comments: true
-categories: 
+categories:
 - TDD
 - Best Practices
 - Agile Development
 ---
 
-{% img right /media/test-pyramid-fowler.png 373 540 'Test Pyramid by Martin Fowler' 'Test Pyramid by Martin Fowler' %}
-
 You probaply heard of the test automation pyramid, which is a great
 idea to make automated testing work in an agile development
-environment. The image copied from [Martin Fowler](https://twitter.com/martinfowler) shows it. He has also
+environment. [Martin Fowler](https://twitter.com/martinfowler)
 [explains the pyramid](http://martinfowler.com/bliki/TestPyramid.html)
-pretty well.
+pretty well on his blog.
 
 The pyramid has three layers UI, Service and Unit tests. Theses layers
 map well to standard web applications.  But in more complex systems
 this simple model does not fit exactly at first view. But that is not
 true. It fits perfectly, if you understand it right.
-
-<!--more-->
 
 What is wrong with the real world?
 ----------

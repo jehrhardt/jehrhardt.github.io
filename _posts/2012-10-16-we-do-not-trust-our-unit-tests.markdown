@@ -15,8 +15,6 @@ do not trust their unit tests. They expect a wrong kind of trust, that
 unit test can not supply. Time to change how we think about quality
 and changing code.
 
-<!--more-->
-
 The missing trust in units
 ----------
 
