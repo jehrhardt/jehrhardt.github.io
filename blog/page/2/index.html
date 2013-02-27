@@ -413,12 +413,119 @@ so you can use <strong>@Named</strong> and  <strong>@Inject</strong> instead of 
 <strong>@Autowired</strong>. Unfortunately Spring&#8217;s default scoping is not compatible with
 JSR 330. Here is how it works:</p>
 
+<h2>Default behaviour</h2>
+
+<p>By default Spring uses it&#8217;s default scoping behaviour on JSR 330 configured
+beans like below.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Named</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GreetingService</span> <span class="o">{</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This means, that <em>GreetingService</em> will become a bean with singleton scope.</p>
+
+<h2>JSR 330 scopes</h2>
+
+<p>In difference to Spring JSR 330 defines, that the default scope of beans is
+prototype, which means a new object is created everytime it will be injected
+somewhere. If you want a different scoping you can create your own annotation for
+this like descriped
+<a href="http://download.oracle.com/javaee/6/api/javax/inject/Scope.html">here</a>. JSR 330
+already comes with a predifined scope annotation for
+<a href="http://download.oracle.com/javaee/6/api/javax/inject/Singleton.html">singletons</a>. To
+make Spring behave as specified in JSR 330, you can use a different scope
+resolver like below.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">&quot;my.package&quot;</span>
+</span><span class='line'>  <span class="na">scope-resolver=</span><span class="s">&quot;org.springframework.context.annotation.Jsr330ScopeMetadataResolver&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Using this additional configuration, will make the above <em>GreetingService</em> bean
+prototype scoped. To make it a singleton bean again, you will need to use the
+singleton scope annotation.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Named</span>
+</span><span class='line'><span class="nd">@Singleton</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GreetingService</span> <span class="o">{</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Custom scopes for JSR 330</h2>
+
+<p>Spring comes with further scopes like <em>request</em> or <em>session</em>. JSR 330 does not
+support them out of the box. You will have to create your own annotations for
+this. Let&#8217;s look, how to do this for the <em>request</em> scope.</p>
+
+<ol>
+<li>Create your own scope annotation:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Scope</span>
+</span><span class='line'><span class="nd">@Documented</span>
+</span><span class='line'><span class="nd">@Retention</span><span class="o">(</span><span class="n">RUNTIME</span><span class="o">)</span>
+</span><span class='line'><span class="kd">public</span> <span class="nd">@interface</span> <span class="n">Request</span> <span class="o">{</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Extend <em>Jsr330ScopeMetadataResolver</em> to map your annotation on Spring&#8217;s
+scope:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomScopeMetadataResolver</span> <span class="kd">extends</span> <span class="n">Jsr330ScopeMetadataResolver</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">Jsr330SpringScopeMetadataResolver</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">registerScope</span><span class="o">(</span><span class="n">Request</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span> <span class="n">WebApplicationContext</span><span class="o">.</span><span class="na">SCOPE_REQUEST</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Use your custom resolver in your Spring configuration:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">&quot;my.package&quot;</span>
+</span><span class='line'>  <span class="na">scope-resolver=</span><span class="s">&quot;my.resolver.package.CustomScopeMetadataResolver&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above sample will make all beans, that are annotated with your own
+<strong>@Request</strong> annotation request scoped.</p>
 </div>
   
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/10/18/spring-and-jsr-330-scopes/">Read on &rarr;</a>
-    </footer>
   
 
 

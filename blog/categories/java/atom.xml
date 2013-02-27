@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | derjan]]></title>
   <link href="http://derjan.io/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://derjan.io/"/>
-  <updated>2013-01-08T08:36:10+01:00</updated>
+  <updated>2013-02-27T08:08:32+01:00</updated>
   <id>http://derjan.io/</id>
   <author>
     <name><![CDATA[Jan Ehrhardt]]></name>
@@ -209,9 +209,6 @@ well Groovy and invokedynamic will work together in future versions.</p>
 so you can use <strong>@Named</strong> and  <strong>@Inject</strong> instead of <strong>@Component</strong> and
 <strong>@Autowired</strong>. Unfortunately Spring's default scoping is not compatible with
 JSR 330. Here is how it works:</p>
-
-<!--more-->
-
 
 <h2>Default behaviour</h2>
 
