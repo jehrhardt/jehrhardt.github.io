@@ -54,3 +54,8 @@ store the URL. Now you can render some HTML with a different link:
 Once the user clicks the link, you can simply grep the URL from the
 cache and call it. No need for starting at _http://api.foo.com_ and
 following the links down to one with rel inbox.
+
+### License
+
+© 2012 Jan Ehrhardt - Licensed under the terms of
+[CC-BY](http://creativecommons.org/licenses/by/3.0/).
