@@ -23,3 +23,8 @@ If you are thinking about applying the DevOps idea to your own
 company, you should learn from the PaaS providers. Think of DevOps as
 making creation and deployment of new applications as easy as
 possible.
+
+### License
+
+© 2012 Jan Ehrhardt - Licensed under the terms of
+[CC-BY](http://creativecommons.org/licenses/by/3.0/).
