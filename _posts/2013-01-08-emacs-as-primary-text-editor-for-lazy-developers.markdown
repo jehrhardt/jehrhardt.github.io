@@ -35,3 +35,8 @@ emacsclient -c                 # opens Emacs in a seperate window
 {% endhighlight %}
 
 Give it a try and learn loving it!
+
+### License
+
+© 2013 Jan Ehrhardt - Licensed under the terms of
+[CC-BY](http://creativecommons.org/licenses/by/3.0/).
