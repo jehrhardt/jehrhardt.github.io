@@ -97,3 +97,8 @@ We have seen, what kind of trust unit tests can supply to us. Although
 this trust does not work very well, when your code is not testable
 improving your code's quality writing testable code is a much better
 way than doing all tests through the UI and let your code rot.
+
+### License
+
+© 2012 Jan Ehrhardt - Licensed under the terms of
+[CC-BY](http://creativecommons.org/licenses/by/3.0/).
