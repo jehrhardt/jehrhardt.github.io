@@ -108,3 +108,8 @@ language. Take your hands off and go home to your Java code.
 What do you think? How do you solve the parameter documentation in
 your favorite programming language? And how do you figure out how to
 use a method?
+
+### License
+
+© 2012 Jan Ehrhardt - Licensed under the terms of
+[CC-BY](http://creativecommons.org/licenses/by/3.0/).
