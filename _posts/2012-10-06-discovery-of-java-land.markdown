@@ -151,3 +151,8 @@ an IDE.
 
 But Java developers must not struggle. They can do Clojure with Maven
 and some IDE plugin to learn the language. That might be the red pill!
+
+### License
+
+© 2012 Jan Ehrhardt - Licensed under the terms of
+[CC-BY](http://creativecommons.org/licenses/by/3.0/).
