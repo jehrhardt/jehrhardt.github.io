@@ -66,3 +66,8 @@ brew switch grails 2.0.0
 When you are using an IDE, you can simply use the Grails libraries
 installed via Homebrew. You can find them in
 _/usr/local/Cellar/grails/${grails.version}/libexec/_.
+
+### License
+
+© 2013 Jan Ehrhardt - Licensed under the terms of
+[CC-BY](http://creativecommons.org/licenses/by/3.0/).
