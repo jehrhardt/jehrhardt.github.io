@@ -92,3 +92,8 @@ public class CustomScopeMetadataResolver extends Jsr330ScopeMetadataResolver {
 
 The above sample will make all beans, that are annotated with your own
 **@Request** annotation request scoped.
+
+### License
+
+© 2012 Jan Ehrhardt - Licensed under the terms of
+[CC-BY](http://creativecommons.org/licenses/by/3.0/).
