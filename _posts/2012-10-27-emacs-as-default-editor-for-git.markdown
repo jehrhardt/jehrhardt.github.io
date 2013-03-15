@@ -28,3 +28,8 @@ Now when I am committing with _git commit_, Emacs will be opend in my
 Terminal. I can edit the commit message and as in any other editor
 too, I save (_C-x C-s_) the message and close (_C-x C-c_) the
 editor. Is the commit message empty, the commit will be abort.
+
+### License
+
+© 2012 Jan Ehrhardt - Licensed under the terms of
+[CC-BY](http://creativecommons.org/licenses/by/3.0/).
