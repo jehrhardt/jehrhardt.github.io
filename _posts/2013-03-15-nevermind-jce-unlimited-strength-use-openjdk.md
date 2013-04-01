@@ -17,17 +17,17 @@ their own OpenJDK packages.
 
 On Ubuntu install the OpenJDK 7 package:
 
-{% highlight bash %}
+```sh
 sudo apt-get install openjdk-7-jre-headless # on server
 sudo apt-get install openjdk-7-jdk openjdk-7-source # on developer machine
-{% endhighlight %}
+```
 
 On RHEL 6 / CentOS 6 install the OpenJDK 7 package this way:
 
-{% highlight bash %}
+```sh
 yum install java-1.7.0-openjdk # on server
 yum install java-1.7.0-openjdk-devel # on developer machine
-{% endhighlight %}
+```
 
 Both have unlimited encryption build in. You can verify it with a simple
 [code snippet](https://gist.github.com/jehrhardt/5167854)

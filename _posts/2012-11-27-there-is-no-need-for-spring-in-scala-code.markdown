@@ -12,18 +12,18 @@ are plenty of reasons today, but one of the most important is to do
 Dependency Injection. There are good reasons to do Dependency
 Injection in your Java Code, but the most important is testing.
 
-{% highlight java %}
+```java
 public class Butler {
   private final GreetingRepository greetingRepository = new GreetingRepository();
 }
-{% endhighlight %}
+```
 
 When we want to write a unit test for the above code, there is no way
-to mock our _GreetingRepository_ variable. Dependency Injection solves
+to mock our ```GreetingRepository``` variable. Dependency Injection solves
 this problem, by putting the call of the constructor outside the
 class. This allows us to inject a mock object in our unit tests.
 
-{% highlight java %}
+```java
 public class Butler {
   private final GreetingRepository greetingRepository;
 
@@ -31,18 +31,18 @@ public class Butler {
     this.greetingRepsitory = greetingRepository;
   }
 }
-{% endhighlight %}
+```
 
 In our production code, we would probably use Spring or if we want to
-be cool Google Guice to instantiate the _Butler_ class and resolve
+be cool Google Guice to instantiate the ```Butler``` class and resolve
 it's dependency. In Scala we would not!
 
 Scala comes with a lot of language features we should miss in
 Java. One is default values for parameters.
 
-{% highlight scala %}
+```scala
 class Butler(greetingRepository: GreetingRepository = new GreetingRepository()) {}
-{% endhighlight %}
+```
 
 Now our Scala butler can be instantiated in two ways. In our
 production code, we simply use the constructor without

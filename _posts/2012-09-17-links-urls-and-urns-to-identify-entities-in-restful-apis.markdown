@@ -37,13 +37,13 @@ developers, we should adapt this awesome concept to our API.
 In JSON based formats hyperlinks can be put into an attribute called
 links, which is an array of link objects. This might look like below.
 
-{% highlight javascript %}
+```javascript
 {"links": [
   {"title": "Cool picture",
    "rel": "details",
    "href": "https://example.org/albums/12/photos/13"}
 ]}
-{% endhighlight %}
+```
 
 A mobile app can also show the thumbnails and store locally the URL
 from the link object. When the user tabs with his finger on the image,
@@ -99,7 +99,7 @@ identifier for an entity. In a JSON format simply place the URN into
 an id attribute for the object. The client can now store a global
 identifier, that works location independent.
 
-Using a URN like _urn:my-company:photo:13_ allows us to store an id
+Using a URN like ```urn:my-company:photo:13``` allows us to store an id
 for each photo from the storage application in the album's
 database. At same time we can define a simple mapping between URNs and
 URLs using [URI templates](http://tools.ietf.org/html/rfc6570).

@@ -8,8 +8,8 @@ categories:
 
 Spring 3 added support for
 [JSR 330 configuration](http://download.oracle.com/javaee/6/api/javax/inject/package-summary.html),
-so you can use **@Named** and  **@Inject** instead of **@Component** and
-**@Autowired**. Unfortunately Spring's default scoping is not compatible with
+so you can use ```@Named``` and  ```@Inject``` instead of ```@Component``` and
+```@Autowired```. Unfortunately Spring's default scoping is not compatible with
 JSR 330. Here is how it works:
 
 Default behaviour
@@ -17,13 +17,13 @@ Default behaviour
 By default Spring uses it's default scoping behaviour on JSR 330 configured
 beans like below.
 
-{% highlight java %}
+```java
 @Named
 public class GreetingService {
 }
-{% endhighlight %}
+```
 
-This means, that *GreetingService* will become a bean with singleton scope.
+This means, that ```GreetingService``` will become a bean with singleton scope.
 
 JSR 330 scopes
 --------------
@@ -37,43 +37,42 @@ already comes with a predifined scope annotation for
 make Spring behave as specified in JSR 330, you can use a different scope
 resolver like below.
 
-{% highlight xml %}
+```xml
 <context:component-scan base-package="my.package"
   scope-resolver="org.springframework.context.annotation.Jsr330ScopeMetadataResolver" />
-{% endhighlight %}
+```
 
-Using this additional configuration, will make the above *GreetingService* bean
-prototype scoped. To make it a singleton bean again, you will need to use the
-singleton scope annotation.
+Using this additional configuration, will make the above ```GreetingService```
+bean prototype scoped. To make it a singleton bean again, you will need to use
+the singleton scope annotation.
 
-
-{% highlight java %}
+```java
 @Named
 @Singleton
 public class GreetingService {
 }
-{% endhighlight %}
+```
 
 Custom scopes for JSR 330
 -------------------------
-Spring comes with further scopes like *request* or *session*. JSR 330 does not
+Spring comes with further scopes like ```request``` or ```session```. JSR 330 does not
 support them out of the box. You will have to create your own annotations for
-this. Let's look, how to do this for the *request* scope.
+this. Let's look, how to do this for the ```request``` scope.
 
 1. Create your own scope annotation:
 
-{% highlight java %}
+```java
 @Scope
 @Documented
 @Retention(RUNTIME)
 public @interface Request {
 }
-{% endhighlight %}
+```
 
-2. Extend *Jsr330ScopeMetadataResolver* to map your annotation on Spring's
+2. Extend ```Jsr330ScopeMetadataResolver``` to map your annotation on Spring's
    scope:
 
-{% highlight java %}
+```java
 public class CustomScopeMetadataResolver extends Jsr330ScopeMetadataResolver {
 
   public Jsr330SpringScopeMetadataResolver() {
@@ -81,17 +80,17 @@ public class CustomScopeMetadataResolver extends Jsr330ScopeMetadataResolver {
   }
 
 }
-{% endhighlight %}
+```
 
 3. Use your custom resolver in your Spring configuration:
 
-{% highlight xml %}
+```xml
 <context:component-scan base-package="my.package"
   scope-resolver="my.resolver.package.CustomScopeMetadataResolver" />
-{% endhighlight %}
+```
 
 The above sample will make all beans, that are annotated with your own
-**@Request** annotation request scoped.
+```@Request``` annotation request scoped.
 
 ### License
 

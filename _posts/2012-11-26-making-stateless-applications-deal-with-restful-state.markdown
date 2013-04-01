@@ -32,7 +32,7 @@ state access. This does not mean you are caching where the user
 currently is in your application, instead you are caching the links. A
 simple example:
 
-{% highlight javascript %}
+```javascript
 {
   "links": [
     {
@@ -41,18 +41,18 @@ simple example:
     }
   ]
 }
-{% endhighlight %}
+```
 
-In the above JSON snippet the link object has a _rel_ attribute. To
+In the above JSON snippet the link object has a ```rel``` attribute. To
 cache that link create a key from the rel attribute's value inbox and
 store the URL. Now you can render some HTML with a different link:
 
-{% highlight html %}
+```html
 <a href="/foo/inbox/">My Foo Inbox</a>
-{% endhighlight %}
+```
 
 Once the user clicks the link, you can simply grep the URL from the
-cache and call it. No need for starting at _http://api.foo.com_ and
+cache and call it. No need for starting at ```http://api.foo.com``` and
 following the links down to one with rel inbox.
 
 ### License

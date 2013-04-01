@@ -14,12 +14,12 @@ In Java land almost everyone is using frameworks like
 [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection).
 Sadly these frameworks are able to deal with code like this:
 
-{% highlight java %}
+```java
 public class HelloWorld {
   @Inject
   private GreetingProvider greetingProvider;
 }
-{% endhighlight %}
+```
 
 These frameworks use the power of Java's reflection API to set a
 private variable to a value at runtime without a constructor or a
@@ -45,7 +45,7 @@ But how can we do better?
 There is only one way, you should do Dependency Injection. Use a
 constructor! This results in code like this:
 
-{% highlight java %}
+```java
 public class HelloWorld {
   private final GreetingProvider greetingProvider;
 
@@ -54,14 +54,14 @@ public class HelloWorld {
     this.greetingProvider = greetingProvider;
   }
 }
-{% endhighlight %}
+```
 
 But if you think there is to much code, learn and use another laguage!
 The same in Scala:
 
-{% highlight scala %}
+```scala
 class HelloWorld(greetingProvider: GreetingProvider) {}
-{% endhighlight %}
+```
 
 ### License
 
