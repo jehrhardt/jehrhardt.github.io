@@ -20,10 +20,10 @@ cd jehrhardt.github.com
 
 # Install dependencies and start Jekyll server for local preview
 bundle install
-bundle exec jekyll --server --auto
+bundle exec jekyll serve --watch
 
 # Build page like Github pages does
-bundle exec jekyll --pygments --no-lsi --safe
+bundle exec jekyll
 ```
 
 License

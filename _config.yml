@@ -7,8 +7,5 @@ pygments: true
 # Define structure of links to posts
 permalink: /blog/:year/:month/:day/:title/
 
-# Enable reloading during development
-auto: true
-
 # Disable custom plugins, since not allowed on Github pages
 safe: true
