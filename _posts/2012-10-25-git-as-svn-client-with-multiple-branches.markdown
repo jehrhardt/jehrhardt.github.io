@@ -37,8 +37,3 @@ available in Git with the name ```git-svn-second-branch```.
 
 If you want to ckeck it out, run ```git checkout git-svn-second-branch
 -b my-local-branch```.
-
-### License
-
-© 2012 Jan Ehrhardt - Licensed under the terms of
-[CC-BY](http://creativecommons.org/licenses/by/3.0/).

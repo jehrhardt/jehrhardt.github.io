@@ -59,15 +59,10 @@ use. To run Grails from your Terminal, you will need to link the
 ```grails``` command against the version, you currently need. This can be
 done with the ```switch``` command.
 
-{% highlight bash %}
+```sh
 brew switch grails 2.0.0
-{% endhighlight %}
+```
 
 When you are using an IDE, you can simply use the Grails libraries
 installed via Homebrew. You can find them in
 _/usr/local/Cellar/grails/${grails.version}/libexec/_.
-
-### License
-
-© 2012 Jan Ehrhardt - Licensed under the terms of
-[CC-BY](http://creativecommons.org/licenses/by/3.0/).

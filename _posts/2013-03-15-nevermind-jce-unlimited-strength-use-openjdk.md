@@ -31,8 +31,3 @@ yum install java-1.7.0-openjdk-devel # on developer machine
 
 Both have unlimited encryption build in. You can verify it with a simple
 [code snippet](https://gist.github.com/jehrhardt/5167854)
-
-### License
-
-© 2013 Jan Ehrhardt - Licensed under the terms of
-[CC-BY](http://creativecommons.org/licenses/by/3.0/).

@@ -134,8 +134,3 @@ make your test code much cleaner.
 
 There are a lot more good techniques to improve TDD. Tell me about
 them in the comments.
-
-### License
-
-© 2012 Jan Ehrhardt - Licensed under the terms of
-[CC-BY](http://creativecommons.org/licenses/by/3.0/).

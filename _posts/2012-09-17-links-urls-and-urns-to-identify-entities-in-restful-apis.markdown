@@ -106,8 +106,3 @@ URLs using [URI templates](http://tools.ietf.org/html/rfc6570).
 
 Using ids is not as smart as hyperlinks, but with URNs they can be
 handled also pretty well.
-
-### License
-
-© 2012 Jan Ehrhardt - Licensed under the terms of
-[CC-BY](http://creativecommons.org/licenses/by/3.0/).

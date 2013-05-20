@@ -169,8 +169,3 @@ Sure this is one solution to the problem and you may have found
 another way to work with different test levels. What do you think?
 How did you solve this? What worked great? What was bad? Leave me a
 comment.
-
-### License
-
-© 2012 Jan Ehrhardt - Licensed under the terms of
-[CC-BY](http://creativecommons.org/licenses/by/3.0/).

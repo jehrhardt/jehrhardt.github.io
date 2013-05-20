@@ -49,8 +49,3 @@ production code, we simply use the constructor without
 arguments. Scala will use the default value instead. In our unit
 tests, we can instatiate the class and explicitly put a mock object in
 the constructor call.
-
-### License
-
-© 2012 Jan Ehrhardt - Licensed under the terms of
-[CC-BY](http://creativecommons.org/licenses/by/3.0/).

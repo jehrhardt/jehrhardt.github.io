@@ -62,8 +62,3 @@ The same in Scala:
 ```scala
 class HelloWorld(greetingProvider: GreetingProvider) {}
 ```
-
-### License
-
-© 2012 Jan Ehrhardt - Licensed under the terms of
-[CC-BY](http://creativecommons.org/licenses/by/3.0/).

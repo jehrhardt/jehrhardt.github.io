@@ -26,8 +26,3 @@ this might be a hard topic. You know your IDE and neither CoffeScript
 nor JavaScript integrate as well into it as Java does. But it is never
 to late to learn programming without a
 [walker](https://en.wikipedia.org/wiki/Walker_\(mobility\)).
-
-### License
-
-© 2012 Jan Ehrhardt - Licensed under the terms of
-[CC-BY](http://creativecommons.org/licenses/by/3.0/).
