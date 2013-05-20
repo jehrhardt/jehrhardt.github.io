@@ -9,3 +9,6 @@ permalink: /blog/:year/:month/:day/:title/
 
 # Disable custom plugins, since not allowed on Github pages
 safe: true
+
+# Enable pagination to keep the start page slim
+paginate: 20

@@ -1,3 +1,8 @@
 ul.posts {
   list-style-type: none;
+  margin: 0px;
+}
+
+.date {
+  float: right;
 }
