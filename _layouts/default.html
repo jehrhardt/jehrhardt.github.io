@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{{ page.title }}</title>
+    {% if page.title %}
+    <title>derjan.io | {{ page.title }}</title>
+    {% else %}
+    <title>derjan.io</title>
+    {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Jan Ehrhardt">
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic|Ubuntu:300|Source+Code+Pro' rel='stylesheet' type='text/css'>
