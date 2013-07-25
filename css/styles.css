@@ -1,3 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic|Ubuntu:300|Source+Code+Pro);
+
+@import "syntax.css";
 .clearfix {
   *zoom: 1;
 }
@@ -1334,4 +1337,26 @@ a:focus {
   .uneditable-input.span1 {
     width: 28px;
   }
+}
+header.page {
+  background-color: #000;
+}
+header.page h1 {
+  width: 940px;
+  margin-right: auto;
+  margin-left: auto;
+  *zoom: 1;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  line-height: 75px;
+  font-variant: small-caps;
+}
+header.page h1:before,
+header.page h1:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+header.page h1:after {
+  clear: both;
 }
