@@ -1350,6 +1350,7 @@ header.page h1 {
   margin-bottom: 0px;
   line-height: 75px;
   font-variant: small-caps;
+  padding-left: 20px;
 }
 header.page h1:before,
 header.page h1:after {
@@ -1359,4 +1360,15 @@ header.page h1:after {
 }
 header.page h1:after {
   clear: both;
+}
+@media (max-width: 979px) {
+  header.page h1 {
+    line-height: 50px;
+  }
+}
+@media (max-width: 767px) {
+  header.page {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
 }
