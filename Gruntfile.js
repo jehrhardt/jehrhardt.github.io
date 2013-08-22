@@ -12,11 +12,6 @@ module.exports = function(grunt) {
       }
     },
     uglify: {
-      jquery: {
-        files: {
-          'assets/js/jquery.js': 'bower_components/jquery/jquery.js'
-        }
-      },
       html5shiv: {
         files: {
           'assets/js/html5shiv.js': 'bower_components/html5shiv/src/html5shiv-printshiv.js'
