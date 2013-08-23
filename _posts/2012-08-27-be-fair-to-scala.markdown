@@ -14,8 +14,7 @@ framework. But right after the first contact, I here them
 screaming. Oh my god, this library uses all the tricky features Scala
 comes with. Do the developers not care about readability?
 
-Some lines of Scala code
-----------
+### Some lines of Scala code
 
 What is the problem in Scala? To understand it, lets take a brief look
 to some Scala code.
@@ -52,8 +51,7 @@ The methods in the traits are called implicit, thus the compiler will
 create byte code, that calls these methods. But these calls are not
 written expilcitly in the code.
 
-What Java developers do not like
-----------
+### What Java developers do not like
 
 The above code snippets are using a nice features, that Scala provides
 and that Java does not. But when Java developers start using Scala,
@@ -71,8 +69,7 @@ From a Java developer's point of view, this is not easy to understand.
 Where is this implicit conversion of types done? A Java developer
 might think, this reduces readability. But this is not true.
 
-It is not Scala's fault
-----------
+### It is not Scala's fault
 
 Scala is not a better Java. It is a completely different language. As
 any other language too, Scala also has a community around it. There
@@ -95,8 +92,7 @@ Scala's type system makes it also complex. The compiler can check the
 types, while the developer may not understand them easily from the
 method signature.
 
-Learn to work the Scala way
-----------
+### Learn to work the Scala way
 
 There is only one solution to this problem. Java developers must learn
 how to work with a language, that has a type system different from

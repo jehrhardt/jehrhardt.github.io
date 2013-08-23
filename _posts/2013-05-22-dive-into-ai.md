@@ -9,8 +9,7 @@ about in the past. This new thing to me is
 [artificial intelligence (AI)](https://en.wikipedia.org/wiki/Artificial_intelligence).
 But why do I care about it now?
 
-Deep learning and mobile devices
---------------------------------
+### Deep learning and mobile devices
 
 There are two specific reasons to me, why I start to dive into this
 topic. First mobile devices have become very popular, but they are
@@ -27,8 +26,7 @@ understand somthing really deeply. Google is doing some interessting
 things in this area with it's
 [Brain project](http://www.wired.com/insights/elsewhere/the-man-behind-the-google-brain-andrew-ng-and-the-quest-for-the-new-ai-20130507/).
 
-What's hard with AI?
---------------------
+### What's hard with AI?
 
 While the communities around web development or agile practices are
 well known and pretty active, it looks like there is not so much
@@ -42,8 +40,7 @@ There are some open source libraries and books available for neural
 networks, but looking to web development and frameworks like Ruby on
 Rails, shows that we are probably just at the beginning.
 
-Dive into AI
-------------
+### Dive into AI
 
 My first step to learn about AI was to join Andrew Ng's
 [machine learning class on Coursera](https://www.coursera.org/course/ml).

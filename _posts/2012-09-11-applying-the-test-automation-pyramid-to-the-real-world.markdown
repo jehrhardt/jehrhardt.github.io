@@ -19,8 +19,7 @@ map well to standard web applications.  But in more complex systems
 this simple model does not fit exactly at first view. But that is not
 true. It fits perfectly, if you understand it right.
 
-What is wrong with the real world?
-----------
+### What is wrong with the real world?
 
 The test automation pyramid is created with web applications in
 mind. Think of a simple monolithic LAMP or Rails application. All the
@@ -36,8 +35,7 @@ written in [Java](http://openjdk.java.net),
 [Scala](http://www.scala-lang.org) or [Clojure](http://clojure.org) -
 are accessed through HTTP. But how do you apply the pyramid?
 
-What is wrong with the pyramid?
-----------
+### What is wrong with the pyramid?
 
 The problem comes from the miss leading names of the layers in the
 pyramid. E. g. the top layer is called UI tests and our backend
@@ -49,8 +47,7 @@ layer _function tests_ instead of UI tests. This name also applies well
 to non GUI applications. The tests in this layer should be very
 similar to UI tests.
 
-Testing an application works
-----------
+### Testing an application works
 
 The _functional test_ layer on top should prove the application
 works. This means, you have at least to start your application
@@ -78,8 +75,7 @@ An important point is to know, that developers might not run theses
 test very frequently on their own local machines. But this is ok as
 long as some continous integration server will run them regularly.
 
-Testing your application behaves correctly
-----------
+### Testing your application behaves correctly
 
 When _functional tests_ do not test the correct behaviour of your
 application, you need another layer to this. In the test pyramid the
@@ -107,8 +103,7 @@ server. Use simple HTTP mocks with static JSON files instead of real
 services in the backend. Keep your infrastructure as lean as possible
 to make running the tests easy.
 
-Testing your code
-----------
+### Testing your code
 
 A _unit test_ should be executable as fast as possible. If some
 framework needs some seconds to initialize, skip it in the unit
@@ -133,8 +128,7 @@ better. They can help you to change your code, without fearing to
 break it. And they can help you to find errors in the code, when they
 fail.
 
-When should your tests run?
-----------
+### When should your tests run?
 
 Unit tests can be found near the production code. In multi module
 projects, each module will have its unit tests. Most tools like Maven
@@ -162,8 +156,7 @@ deploys the software on a test machine with a real database, real HTTP
 and real authentication and than runs the functional tests against
 this system.
 
-Other ways
-----------
+### Other ways
 
 Sure this is one solution to the problem and you may have found
 another way to work with different test levels. What do you think?

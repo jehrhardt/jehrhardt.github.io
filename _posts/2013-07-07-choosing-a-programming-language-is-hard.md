@@ -16,8 +16,7 @@ programming languages.
 The above triangle shows three properties, that are important for the practical
 use of a programming language.
 
-Code to run speed
--------------------------
+### Code to run speed
 
 In most cases it does not matter how fast your code could be executed at
 runtime. More important is how fast you get from writing a line of code to
@@ -26,7 +25,6 @@ compiler comes in. Since compilation is slow, It takes a lot of time to execute
 your unit test. At the moment Scala is only language I know, that has such a
 performance, when it comes to this point.
 
-Expressiveness
-----------------------
+### Expressiveness
 
 It is more important, that code can be read than be written.

@@ -17,8 +17,7 @@ world in the last months and they were wondering what happens
 there. But why is the the Java world culturally so isolated, that even
 experienced developers struggle with the tools everyone else uses?
 
-Meeting the clash
-----------
+### Meeting the clash
 
 Over the last few years I have done a few or even more steps with
 different languages. I have taken a look to
@@ -43,8 +42,7 @@ Clojure as well as Java developers and even old Lisp fans. But this
 brings together two programming cultures, that could not be more
 different.
 
-IDE vs text editor
-----------
+### IDE vs text editor
 
 Java is not fun with all this boiler plate code. To make such a
 language usable, you will need a good tool. Not a good text editor, a
@@ -71,8 +69,7 @@ Some might simply be not comfortable with a text editor, which is
 ok. But some even do not understand, that there are languages, that
 are more usable than Java and thus create no need for an IDE.
 
-IDE vs Terminal
-----------
+### IDE vs Terminal
 
 Some years ago as I first tried a new build tool for Java projects
 called [Gradle](http://gradle.org), it was not possible to get the
@@ -102,8 +99,7 @@ to use a powerful command line tool. They have made all the quirky
 stuff in the Java world useable by hiding the command line instead of
 creating better tools. The Java developers are now addicted.
 
-Static vs dynamic typing
-----------
+### Static vs dynamic typing
 
 There is this one big argument, a Java developer will have, why he
 still believes in Java: static typing. Java's static type system is
@@ -139,8 +135,7 @@ developer. You can be very productive, without an IDE that shows you
 what methods you can invoke on an object. You can simply know it, read
 it or try things out.
 
-The discovery has started
-----------
+### The discovery has started
 
 The world could be fine with IDE addicted Java developers isolated
 from the innovative rest. But with Clojure the game has

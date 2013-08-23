@@ -12,8 +12,8 @@ so you can use ```@Named``` and  ```@Inject``` instead of ```@Component``` and
 ```@Autowired```. Unfortunately Spring's default scoping is not compatible with
 JSR 330. Here is how it works:
 
-Default behaviour
------------------
+### Default behaviour
+
 By default Spring uses it's default scoping behaviour on JSR 330 configured
 beans like below.
 
@@ -25,8 +25,8 @@ public class GreetingService {
 
 This means, that ```GreetingService``` will become a bean with singleton scope.
 
-JSR 330 scopes
---------------
+### JSR 330 scopes
+
 In difference to Spring JSR 330 defines, that the default scope of beans is
 prototype, which means a new object is created everytime it will be injected
 somewhere. If you want a different scoping you can create your own annotation for
@@ -53,8 +53,8 @@ public class GreetingService {
 }
 ```
 
-Custom scopes for JSR 330
--------------------------
+### Custom scopes for JSR 330
+
 Spring comes with further scopes like ```request``` or ```session```. JSR 330 does not
 support them out of the box. You will have to create your own annotations for
 this. Let's look, how to do this for the ```request``` scope.
