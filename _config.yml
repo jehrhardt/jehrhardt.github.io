@@ -12,3 +12,6 @@ safe: true
 
 # Enable pagination to keep the start page slim
 paginate: 20
+
+# Exclude everything, that is required for development, from the the page
+exclude: [less, node_modules, package.json, bower_components, bower.json, Gruntfile.js, Gemfile, Gemfile.lock, README.md, LICENSE.txt]

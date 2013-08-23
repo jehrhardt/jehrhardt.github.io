@@ -1,0 +1,11 @@
+{
+  "name": "derjan.io",
+  "version": "1.0.0",
+  "dependencies": {
+    "grunt-cli": "0.1.9",
+    "grunt": "0.4.1",
+    "grunt-contrib-less": "0.6.4",
+    "grunt-contrib-uglify": "0.2.2",
+    "bower": "1.0.0"
+  }
+}

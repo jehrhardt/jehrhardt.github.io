@@ -3,27 +3,73 @@ derjan.io
 
 Source code for derjan.io - based on Jekyll and Github pages
 
+Get the sources
+---------------
+
+Clone the Git repository
+
+```sh
+git clone https://github.com/jehrhardt/jehrhardt.github.io.git
+```
+
+or download the
+[source code](https://github.com/jehrhardt/jehrhardt.github.io/archive/master.zip).
+
+Requirements
+------------
+
+To build the page local or develop the CSS and JavaScript, you need to
+setup some tools.
+
+[Jekyll](http://jekyllrb.com) is used to build the page or run it in
+development mode. It is installed through
+[Bundler](http://gembundler.com).
+
+```sh
+# Install Bundler
+gem install bundler
+
+# Install Jekyll and dependencies
+bundle install
+```
+
+[Node.js](http://nodejs.org) and [NPM](https://npmjs.org) are used to
+run Grunt and Bower for building CSS and JavaScript including
+dependencies. You can simply install both through some
+[package manager](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager).
+To setup the dependencies run
+
+```sh
+# Install Grunt cli package global
+npm install grunt-cli
+
+# Install Bower and Grunt packages
+npm install
+
+# Install dependencies through Bower
+node_modules/bower/bin/bower install
+```
+
 Run local
 ---------
 
-If you want to try out this page on your local machine you should have installed
-[bundler](http://gembundler.com). Bundler will set up your local environment by
-installing all required dependencies in the same version Github pages uses.
+Running the page local can simply be done through Jekyll.
 
 ```sh
-# Install bundler
-gem install bundler
-
-# Clone the repository
-git clone https://github.com/jehrhardt/jehrhardt.github.com.git
-cd jehrhardt.github.com
-
-# Install dependencies and start Jekyll server for local preview
-bundle install
+# Preview page
 bundle exec jekyll serve --watch
 
-# Build page like Github pages does
-bundle exec jekyll
+# Build page
+bundle exec jekyll build
+```
+
+Build CSS and JavaScript
+------------------------
+
+After changing styles or JavaScript code, it can be build by running Grunt
+
+```sh
+grunt
 ```
 
 License
