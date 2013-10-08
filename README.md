@@ -81,4 +81,4 @@ All sources distributed under the
 [GNU Affero General Public License version 3](https://www.gnu.org/licenses/agpl.html).
 
 All content distributed under the
-[Creative Commons Attribution-ShareAlike 3.0 Unported License](https://creativecommons.org/licenses/by-sa/3.0/).
+[Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/).
