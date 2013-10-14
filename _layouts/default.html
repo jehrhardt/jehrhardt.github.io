@@ -32,6 +32,15 @@
        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 
+    var disqus_shortname = 'derjanio';
+    var disqus_identifier = 'http://derjan.io{{ page.url }}';
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
     !function(d,s,id) {
       var js, fjs=d.getElementsByTagName(s)[0];
 
