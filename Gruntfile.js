@@ -14,15 +14,12 @@ module.exports = function(grunt) {
     uglify: {
       html5shiv: {
         files: {
-          'assets/js/html5shiv.js': 'bower_components/html5shiv/src/html5shiv-printshiv.js'
+          'assets/js/html5shiv.js': 'bower_components/html5shiv/dist/html5shiv-printshiv.js'
         }
       },
-      bootstrap: {
+      respond: {
         files: {
-          'assets/js/bootstrap.js': ['bower_components/bootstrap/js/collapse.js',
-                                     'bower_components/bootstrap/js/scrollspy.js',
-                                     'bower_components/bootstrap/js/button.js',
-                                     'bower_components/bootstrap/js/affix.js']
+          'assets/js/respond.js': 'bower_components/respond/respond.src.js'
         }
       }
     }
