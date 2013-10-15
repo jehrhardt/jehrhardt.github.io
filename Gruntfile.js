@@ -12,14 +12,10 @@ module.exports = function(grunt) {
       }
     },
     uglify: {
-      html5shiv: {
+      fixIe: {
         files: {
-          'assets/js/html5shiv.js': 'bower_components/html5shiv/dist/html5shiv-printshiv.js'
-        }
-      },
-      respond: {
-        files: {
-          'assets/js/respond.js': 'bower_components/respond/respond.src.js'
+          'assets/js/fix-ie.js': ['bower_components/html5shiv/dist/html5shiv-printshiv.js',
+                                  'bower_components/respond/respond.src.js']
         }
       }
     }
