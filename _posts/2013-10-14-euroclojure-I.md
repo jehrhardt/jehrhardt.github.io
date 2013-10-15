@@ -134,4 +134,4 @@ summary of the day on the web:
 
 <blockquote class="twitter-tweet"><p>Having a great time at <a href="https://twitter.com/search?q=%23EuroClojure&amp;src=hash">#EuroClojure</a>. Here&#39;s a brief mind-map / post on the <a href="https://twitter.com/search?q=%23keynote&amp;src=hash">#keynote</a>: EuroClojure – Day 1 <a href="http://t.co/E6wZgyJ9aE">http://t.co/E6wZgyJ9aE</a></p>&mdash; Richard West (@RiczWest) <a href="https://twitter.com/RiczWest/statuses/389679871485833217">October 14, 2013</a></blockquote>
 
-Anything I have missed or some additional photos? Just add a comment!
+Anything I have missed or some additional photos?
