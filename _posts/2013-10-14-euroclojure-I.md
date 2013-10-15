@@ -93,7 +93,7 @@ Of course [Jarppe Lansio](https://twitter.com/jarppe). He simply had a
 controled it via a
 [leap motion](https://www.leapmotion.com/product). That's really cool!
 
-<blockquote class="twitter-tweet"><p>Controlling an AR Drone with your hand via leapmotion and clojure. <a href="https://twitter.com/search?q=%23euroclojure&amp;src=hash">#euroclojure</a> <a href="http://t.co/W758jvN324">pic.twitter.com/W758jvN324</a></p>&mdash; Joerg Mueller (@JoergM) <a href="https://twitter.com/JoergM/statuses/389742720270753792">October 14, 2013</a></blockquote>
+<blockquote class="twitter-tweet"><p>Flying a quadcopter with <a href="https://twitter.com/search?q=%23Clojure&amp;src=hash">#Clojure</a> at <a href="https://twitter.com/EuroClojure">@EuroClojure</a> <a href="https://twitter.com/search?q=%23EuroClojure&amp;src=hash">#EuroClojure</a> 2013 <a href="http://t.co/LMGGMkfTg2">http://t.co/LMGGMkfTg2</a></p>&mdash; Daniel Kvasnička (@dkvasnickajr) <a href="https://twitter.com/dkvasnickajr/statuses/389876212207984641">October 14, 2013</a></blockquote>
 
 You can grap [the code from Github](https://github.com/jarppe/sormilla).
 
