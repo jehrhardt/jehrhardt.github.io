@@ -12,8 +12,10 @@ module.exports = function(grunt) {
       }
     },
     uglify: {
-      fixIe: {
+      app: {
         files: {
+          'assets/js/app.js':    ['_js/twitter.js',
+                                  '_js/google-analytics.js'],
           'assets/js/fix-ie.js': ['bower_components/html5shiv/dist/html5shiv-printshiv.js',
                                   'bower_components/respond/respond.src.js']
         }
