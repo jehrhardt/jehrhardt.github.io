@@ -78,7 +78,7 @@ License
 Copyright © 2011-2013 [Jan Ehrhardt](http://derjan.io).
 
 All sources distributed under the
-[GNU Affero General Public License version 3](https://www.gnu.org/licenses/agpl.html).
+[MIT license](LICENSE.txt).
 
 All content distributed under the
 [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/).
