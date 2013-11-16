@@ -10,9 +10,9 @@ Basic development tools
 
 * Terminal (Apple)
 * Xcode Commandline Tools for Git and co.
+* Install homebrew
 * Install ZSH and Oh my ZSH
 * Custom .zshrc
-* Install homebrew
 
 Ruby and RVM
 --------------------
