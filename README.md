@@ -58,7 +58,7 @@ Running the page local can simply be done through Jekyll.
 
 ```sh
 # Preview page
-bundle exec jekyll serve --watch
+bundle exec jekyll serve --watch --drafts
 
 # Build page
 bundle exec jekyll build
