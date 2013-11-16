@@ -40,14 +40,15 @@ dependencies. You can simply install both through some
 To setup the dependencies run
 
 ```sh
-# Install Grunt cli package global
-npm install grunt-cli
+# Install Grunt cli and bower global
+npm install -g grunt-cli
+npm install -g bower
 
-# Install Bower and Grunt packages
+# Install further packages
 npm install
 
 # Install dependencies through Bower
-node_modules/bower/bin/bower install
+bower install
 ```
 
 Run local
