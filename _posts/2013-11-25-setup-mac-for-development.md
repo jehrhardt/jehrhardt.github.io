@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Setup Mac OS X for development"
+date: 2013-11-25 13:02
 ---
 
 After setting up a Mac with Mac OS X Mavericks from scratch, it seems
@@ -35,9 +36,7 @@ curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | 
 
 It is pretty easy to activate the plugins you need or do other
 customization of OH MY ZSHELL! by modifying the .zshrc file. You can
-find mine in a Gist.
-
-{% gist jehrhardt/6724571 .zshrc %}
+find mine in a [Gist](https://gist.github.com/jehrhardt/6724571).
 
 Apple also provides some basic tools like [GCC](http://gcc.gnu.org), [Git](http://git-scm.com) and
 [Subversion](http://subversion.apache.org) for Mac OS X, but they are not installed by default. In the
@@ -49,7 +48,7 @@ command line tools 👍.
 xcode-select --install
 ```
 
-The most important reason to install the tools is [Homebrew](http://brew.sh) 🍺. Mac OS X
+The most important reason to install the tools is [Homebrew 🍺](http://brew.sh). Mac OS X
 has no package manager to install additional tools and Unix libraries
 from the internet, but the open source community fixes this with
 Homebrew. It is extremly easy to install.
@@ -91,13 +90,12 @@ build in version.
 rvm --default use system
 ```
 
-In Ruby projects I put a .ruby-version file with the version, the project requires.
-
-{% gist jehrhardt/7639076 .ruby-version %}
-
-RVM will automatically switch to the version configured in the file,
-when you enter the project directory in your terminal. It will use
-Apple's Ruby again, when leave the project.
+In Ruby projects I put a
+[.ruby-version file](https://gist.github.com/jehrhardt/7639076) with
+the version, the project requires. RVM will automatically switch to
+the version configured in the file, when you enter the project
+directory in your terminal. It will use Apple's Ruby again, when leave
+the project.
 
 Java
 ----
@@ -110,7 +108,7 @@ easiest way to get Java 7 on your machine is installing
 make it work, it is requiered to set the ```JAVA_HOME``` variable in
 .zshrc. This will also prevent the installation of Apple's Java 6.
 
-```
+```sh
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/
 ```
 
@@ -176,11 +174,8 @@ prelude](https://github.com/bbatsov/prelude) as an existing configuration.
 curl -L http://git.io/epre | sh
 ```
 
-I have also some tiny customization of Emacs prelude and some modules I load by default.
-
-{% gist jehrhardt/7276703 personal/derjan.el %}
-
-{% gist jehrhardt/7639865 prelude-modules.el %}
+I have also some tiny customization of Emacs prelude in a
+[Gist](https://gist.github.com/jehrhardt/7276703).
 
 Ready
 -----
