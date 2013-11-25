@@ -142,7 +142,7 @@ brew install node
 
 This will also install [NPM](https://npmjs.org) for installing JavaScript packages. Most of
 these packages are project specific and will be declared in a
-package.json file, but there are two JavaScript tools, I like to install globally 🌍.
+package.json file, but there are two JavaScript tools, I like to install globally 🌏.
 
 ```sh
 npm install -g bower
