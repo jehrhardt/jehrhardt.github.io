@@ -41,8 +41,8 @@ find mine in a Gist.
 
 Apple also provides some basic tools like [GCC](http://gcc.gnu.org), [Git](http://git-scm.com) and
 [Subversion](http://subversion.apache.org) for Mac OS X, but they are not installed by default. In the
-past it was necessary to install Apple's [XCode](https://itunes.apple.com/de/app/xcode/id497799835) IDE to get them on your
-machine, but nowadays there is a slim solution by just installing the
+past it was necessary to install Apple's [XCode](https://itunes.apple.com/de/app/xcode/id497799835)
+IDE to get them on your machine, but nowadays there is a slim solution by just installing the
 command line tools 👍.
 
 ```sh
@@ -114,7 +114,8 @@ make it work, it is requiered to set the ```JAVA_HOME``` variable in
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/
 ```
 
-Some useful tools like [Maven](http://maven.apache.org), [Gradle](http://www.gradle.org), [SBT](http://www.scala-sbt.org) or [Leiningen](http://leiningen.org) can be
+Some useful tools like [Maven](http://maven.apache.org), [Gradle](http://www.gradle.org),
+[SBT](http://www.scala-sbt.org) or [Leiningen](http://leiningen.org) can be
 installed by Homebrew.
 
 ```sh
@@ -181,4 +182,8 @@ I have also some tiny customization of Emacs prelude and some modules I load by 
 
 {% gist jehrhardt/7639865 prelude-modules.el %}
 
-🍺💃😊
+Ready
+-----
+
+That is all. I hope it might be helpful for someone. Choose the tools
+you need from above and be productive! 🍺💃😊
