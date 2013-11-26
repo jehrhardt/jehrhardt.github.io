@@ -82,4 +82,4 @@ All sources distributed under the
 [MIT license](LICENSE.txt).
 
 All content distributed under the
-[Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/).
+[Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
