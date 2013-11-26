@@ -14,7 +14,7 @@ Basic development tools
 -----------------------
 
 In the past I have used [iTerm 2](http://www.iterm2.com), but after some improvements in the
-last years, I am using Apple's Terinal app again. It is good enough
+last years, I am using Apple's Terminal app again. It is good enough
 for me 😉.
 
 Apple comes with the [Bash](http://www.gnu.org/software/bash/) as the default Shell. That might be fine for
