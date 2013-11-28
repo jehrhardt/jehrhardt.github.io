@@ -70,6 +70,8 @@ alias git-svn="/usr/bin/git svn"
 git-svn allows me use Git as the one and only versioning tool, even
 when a project or company still uses Subversion 😜.
 
+*Update:* Git Subversion integration has been fixed. So the alias is no longer required.
+
 Ruby and RVM
 ------------
 
