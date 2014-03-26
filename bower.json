@@ -2,9 +2,9 @@
   "name": "derjan.io",
   "version": "1.0.0",
   "dependencies": {
-    "bootstrap": "3.0.0",
+    "bootstrap": "3.1.1",
     "html5shiv": "3.7.0",
-    "respond": "1.3.0"
+    "respond": "1.4.2"
   },
   "ignore": [
     "**/.*",
