@@ -54,10 +54,10 @@ Running the page local can simply be done through Jekyll.
 
 ```sh
 # Preview page
-bundle exec jekyll serve --watch --drafts
+jekyll serve --watch --drafts
 
 # Build page
-bundle exec jekyll build
+jekyll build
 ```
 
 Build CSS and JavaScript
