@@ -1,9 +1,6 @@
 # Jekyll
 _site/*
 
-# Bundler
-Gemfile.lock
-
 # npm
 node_modules/*
 

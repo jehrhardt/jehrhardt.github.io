@@ -22,15 +22,11 @@ To build the page local or develop the CSS and JavaScript, you need to
 setup some tools.
 
 [Jekyll](http://jekyllrb.com) is used to build the page or run it in
-development mode. It is installed through
-[Bundler](http://gembundler.com).
+development mode. It is installed through the github-pages Gem.
 
 ```sh
-# Install Bundler
-gem install bundler
-
-# Install Jekyll and dependencies
-bundle install
+# Install Github Pages Gem
+sudo gem install github-pages
 ```
 
 [Node.js](http://nodejs.org) and [NPM](https://npmjs.org) are used to
