@@ -20,7 +20,6 @@ with Homebrew and R.
 
 ```sh
 brew tap homebrew/science
-
 brew install r
 ```
 
