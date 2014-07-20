@@ -26,7 +26,7 @@ development mode. It is installed through the github-pages Gem.
 
 ```sh
 # Install Github Pages Gem
-sudo gem install github-pages
+gem install github-pages
 ```
 
 [Node.js](http://nodejs.org) and [NPM](https://npmjs.org) are used to
