@@ -19,6 +19,8 @@ Download and install the latest version, **restart** your Mac and then go on
 with Homebrew and R.
 
 ```sh
+brew tap homebrew/science
+
 brew install r
 ```
 
