@@ -2,7 +2,7 @@
 _site/*
 
 # npm
-node_modules/*
+_src/node_modules/*
 
 # bower
-bower_components/*
+_src/bower_components/*

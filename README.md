@@ -1,81 +1,37 @@
 derjan.io
 ==========
 
-Source code for derjan.io - based on Jekyll and Github pages
-
-Get the sources
----------------
-
-Clone the Git repository
-
-```sh
-git clone https://github.com/jehrhardt/jehrhardt.github.io.git
-```
-
-or download the
-[source code](https://github.com/jehrhardt/jehrhardt.github.io/archive/master.zip).
+Source code for http://derjan.io - based on Jekyll and Github pages.
 
 Requirements
 ------------
 
-To build the page local or develop the CSS and JavaScript, you need to
-setup some tools.
-
-[Jekyll](http://jekyllrb.com) is used to build the page or run it in
-development mode. It is installed through the github-pages Gem.
+To run the page locally you can simply install a Gem provided by Github.
 
 ```sh
-# Install Github Pages Gem
 gem install github-pages
 ```
 
-[Node.js](http://nodejs.org) and [NPM](https://npmjs.org) are used to
-run Grunt and Bower for building CSS and JavaScript including
-dependencies. You can simply install both through some
-[package manager](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager).
-To setup the dependencies run
+Usage
+-----
+
+To preview the page locally in your browser, run the `jekyll` command from your
+terminal.
 
 ```sh
-# Install Grunt cli and bower global
-npm install -g grunt-cli
-npm install -g bower
-
-# Install further packages
-npm install
-
-# Install dependencies through Bower
-bower install
-```
-
-Run local
----------
-
-Running the page local can simply be done through Jekyll.
-
-```sh
-# Preview page
 jekyll serve --watch --drafts
-
-# Build page
-jekyll build
 ```
 
-Build CSS and JavaScript
-------------------------
-
-After changing styles or JavaScript code, it can be build by running Grunt
+You can also build the page as Github does.
 
 ```sh
-grunt
+jekyll build
 ```
 
 License
 -------
 
 Copyright © 2011-2014 [Jan Ehrhardt](http://derjan.io).
-
-All sources distributed under the
-[MIT license](LICENSE).
 
 All content distributed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
