@@ -75,7 +75,7 @@ License
 Copyright © 2011-2014 [Jan Ehrhardt](http://derjan.io).
 
 All sources distributed under the
-[MIT license](LICENSE.txt).
+[MIT license](LICENSE).
 
 All content distributed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
