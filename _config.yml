@@ -1,14 +1,8 @@
 # Use Redcarpet for Github like code blocks.
 markdown: redcarpet
 
-# Use Pygments to add syntax highlighting
-pygments: true
-
 # Define structure of links to posts
 permalink: /blog/:year/:month/:day/:title/
 
-# Disable custom plugins, since not allowed on Github pages
-safe: true
-
 # Exclude everything, that is required for development, from the the page
-exclude: [less, node_modules, package.json, bower_components, bower.json, Gruntfile.js, Gemfile, Gemfile.lock, README.md, LICENSE.txt]
+exclude: [node_modules, package.json, bower_components, bower.json, Gruntfile.js, README.md, LICENSE.txt]
