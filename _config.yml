@@ -14,4 +14,4 @@ defaults:
 permalink: /blog/:year/:month/:day/:title/
 
 # Exclude license and README from generated page
-exclude: [README.md, LICENSE.txt]
+exclude: [README.md, LICENSE]
