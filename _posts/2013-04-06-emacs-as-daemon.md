@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Emacs as daemon"
 date: 2013-04-06 08:05
 categories:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Setup Mac OS X for development"
 date: 2013-11-25 13:02
 ---

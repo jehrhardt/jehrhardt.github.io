@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Dive into AI"
 date: 2013-05-22 13:03
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Successful DevOps keep their focus on applications"
 date: 2012-10-22 22:51
 categories:

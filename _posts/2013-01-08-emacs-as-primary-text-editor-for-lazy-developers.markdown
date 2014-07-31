@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Emacs as primary text editor for lazy developers"
 date: 2013-01-08 08:30
 categories:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Discovery of Java Land"
 date: 2012-10-06 19:16
 categories:

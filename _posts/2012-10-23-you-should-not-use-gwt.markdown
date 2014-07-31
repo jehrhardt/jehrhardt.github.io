@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "You should not use GWT"
 date: 2012-10-23 10:25
 categories:

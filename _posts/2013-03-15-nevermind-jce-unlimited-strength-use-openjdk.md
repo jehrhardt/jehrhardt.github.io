@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Nevermind JCE unlimited strength, use OpenJDK"
 date: 2013-03-15 08:42
 categories:

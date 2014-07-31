@@ -1,6 +1,15 @@
 # Use Redcarpet for Github like code blocks.
 markdown: redcarpet
 
+# Define defaults properties
+defaults:
+  -
+    scope:
+      path: ""
+      type: "post"
+    values:
+      layout: "post"
+
 # Define structure of links to posts
 permalink: /blog/:year/:month/:day/:title/
 

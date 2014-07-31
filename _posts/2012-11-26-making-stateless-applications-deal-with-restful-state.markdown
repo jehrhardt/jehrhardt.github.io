@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Making stateless applications deal with RESTful state"
 date: 2012-11-26 09:17
 categories:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Setup R with Homebrew on Mac OS X"
 date: 2014-07-17 11:55
 ---

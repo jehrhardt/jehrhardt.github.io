@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Don't miss to write good unit tests"
 date: 2012-08-31 10:46
 categories:

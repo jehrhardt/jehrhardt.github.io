@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Emacs as default editor for Git"
 date: 2012-10-27 12:17
 categories:

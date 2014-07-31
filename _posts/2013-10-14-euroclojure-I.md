@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "EuroClojure - The First Day"
 date: 2013-10-14 23:25
 ---

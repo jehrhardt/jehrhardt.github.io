@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "There is no need for Spring in Scala code"
 date: 2012-11-27 04:26
 categories:

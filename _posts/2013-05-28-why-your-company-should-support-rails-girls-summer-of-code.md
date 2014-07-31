@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Why your company should support Rails Girls Summer of Code"
 date: 2013-05-28 08:27
 ---

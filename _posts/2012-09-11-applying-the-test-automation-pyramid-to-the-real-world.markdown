@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Applying the test automation pyramid to the real world"
 date: 2012-09-11 7:47
 categories:
