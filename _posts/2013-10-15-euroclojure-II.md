@@ -6,7 +6,8 @@ date: 2013-10-15 22:33
 After an amazing first day, the second day of EuroClojure 2013 was
 different, but also really great.
 
-### Narcissistic Design
+Narcissistic Design
+-------------------
 
 The funny keynote by
 [Stuart Halloway](https://twitter.com/stuarthalloway), was about him,
@@ -28,7 +29,8 @@ You can also read
 [some further notes on it](http://teropa.info/blog/2013/10/15/euroclojure-2013-narcissistic-design.html)
 taken by [Tero Parviainen](https://twitter.com/teropa).
 
-### Migrating an existing code base to Clojure
+Migrating an existing code base to Clojure
+------------------------------------------
 
 The next two talks came from companies, that migrated to Clojure and
 shared their experiences.
@@ -55,7 +57,8 @@ Clojure code base. The best is, they did it in just six month!
 
 <blockquote class="twitter-tweet"><p>The new mail online code base <a href="https://twitter.com/search?q=%23euroclojure&amp;src=hash">#euroclojure</a> <a href="http://t.co/gIw1hQK0MU">pic.twitter.com/gIw1hQK0MU</a></p>&mdash; Jan Ehrhardt (@derjan) <a href="https://twitter.com/derjan/statuses/390050827291078657">October 15, 2013</a></blockquote>
 
-### The lightning talks
+The lightning talks
+-------------------
 
 After lunch three lightning talks were given. The first one about
 [Literate Programming](https://en.wikipedia.org/wiki/Literate_programming)
@@ -65,7 +68,8 @@ is compiled to native x86 code. Pretty amazing. The last lighting talk
 was a solid comparision of Clojure template engines without any
 winner.
 
-### Turn the music on again
+Turn the music on again
+-----------------------
 
 After the Creative Machines talk yesterday, we got music again on the
 stage. [Sam Aaron](https://twitter.com/samaaron) started his talk with
@@ -81,7 +85,8 @@ on friday evening. You can watch a video of what he does on YouTube:
 
 <iframe width="560" height="315" src="//www.youtube-nocookie.com/embed/zJqH5bNcIN0?rel=0" frameborder="0" allowfullscreen></iframe>
 
-### Enterprise integration patterns
+Enterprise integration patterns
+-------------------------------
 
 The last two talks were about enterprise integration, a topic I would
 not expect on a Clojure conference. But the talks were less borring,
@@ -90,7 +95,8 @@ than expected. The speakers showed their expiriences about tools like
 [Lamina](https://github.com/ztellman/lamina) for integration
 scenarios, which was really interesting.
 
-### Conclusion
+Conclusion
+----------
 
 EuroClojure 2013 was a extemely valuable event with lots of inspiring
 talks and fun. I am definitely looking forward to next year's

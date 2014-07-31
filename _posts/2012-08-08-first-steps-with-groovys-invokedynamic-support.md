@@ -13,7 +13,8 @@ default, instead you have to activate it. But there is only few
 documentation and it is spread over the web. So how do we use
 invokedynamic in our code?
 
-### Get your machine ready
+Get your machine ready
+----------------------
 
 First of all you should have installed
 [Java 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html),
@@ -38,7 +39,8 @@ These steps are pretty similar to my
 they are necessary to do your first steps with invokedynamic. But at
 this time there is no invokedynamic involved.
 
-### Two steps to use invokedynamic
+Two steps to use invokedynamic
+------------------------------
 
 The first step on our way to invokedynamic is using the right Groovy
 JAR, while executing our byte code. In ```$GROOVY\_HOME/embeddable/``` you
@@ -59,7 +61,8 @@ groovyc --indy HelloWorld.groovy
 java -classpath .:$GROOVY_HOME/embeddable/groovy-all-2.0.1-indy.jar HelloWorld
 ```
 
-### Make your Groovy 2.0 indy
+Make your Groovy 2.0 indy
+-------------------------
 
 Running the above code will fail at second command with a curious
 exception:
@@ -86,7 +89,8 @@ Now the above sample should work, but it really looks like the Groovy
 developers do not want you to use invokedynamic. They made it as
 difficult as possible, but why?
 
-### Loosing previous optimizations with invokedynamic
+Loosing previous optimizations with invokedynamic
+-------------------------------------------------
 
 The Groovy developers have spent a lot of time to get Groovy's runtime
 faster. One great step was the primitive optimization introduced with
@@ -103,7 +107,8 @@ Groovy 1.8 or 2.0: 3.08s
 Groovy 2.0 with indy: 6.55s
 ```
 
-### It's just the first step for Groovy
+It's just the first step for Groovy
+-----------------------------------
 
 It is good for Groovy to support invokedynamic, but the support is not
 ready yet. Some code might benefit from it, but other does

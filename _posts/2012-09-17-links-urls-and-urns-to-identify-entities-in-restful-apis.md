@@ -13,9 +13,10 @@ identify resources.
 But how are you dealing with URLs in your API? Are you telling your
 users how to create URLs?  And what is about navigation?  Do your
 users know how to navigate through the data your API offers? Knowing
-some basic priciples might improve your APIs a lot.
+some basic principles might improve your APIs a lot.
 
-### Starting small
+Starting small
+--------------
 
 Most applications start small. So let us look at a simple example a
 photo album application. Everytime a user opens the URL of a photo
@@ -46,7 +47,8 @@ from the link object. When the user tabs with his finger on the image,
 the app can do the same as the browser does. It can simply follow URL
 from the link to show the image details.
 
-### The power of links, when you grow
+The power of links, when you grow
+---------------------------------
 
 Hopefully our service is growing and a simple monolithic web
 application with a MySQL database does not work anymore. So we are
@@ -55,7 +57,7 @@ application highly optimized to store masses of photos. This is where
 hyperlinking shows it's real power.
 
 Our new photo storage application might provide URLs with a completely
-different structur. The URLs even might point to a different subdomain
+different structure. The URLs even might point to a different subdomain
 as our web application. While the image tags in our HTML contain other
 URLs, the browser does not care about any change at this point.
 
@@ -64,7 +66,8 @@ served partially by the photo storage application. This is possible,
 since the app does not know anything about the URL. It just gets it
 from a link object in the JSON document.
 
-### Where hyperlinking does not fit anymore
+Where hyperlinking does not fit anymore
+---------------------------------------
 
 Although hyperlinking allows clients to behave similar to browsers and
 thus become more independent of URL structurs, this concept is

@@ -10,7 +10,8 @@ do not trust their unit tests. They expect a wrong kind of trust, that
 unit test can not supply. Time to change how we think about quality
 and changing code.
 
-### The missing trust in units
+The missing trust in units
+--------------------------
 
 The trust developers want is a large one. They want to trust their
 application as a whole.  They want to know changing a line of code
@@ -35,7 +36,8 @@ many times in a hour. But they simply test a simple method or class.
 How can we trust them? How can we prove the application will not be
 broken by changing code?
 
-### Write testable code
+Write testable code
+-------------------
 
 Many people try to tell us
 [TDD](/blog/2012/08/31/dont-miss-to-write-good-unit-tests/) results in
@@ -66,7 +68,8 @@ pieces each with a very stable API. If you make a change to your code,
 it might affect just few places and hopefully it does not break your
 internal APIs.
 
-### What about the need of API breaks?
+What about the need of API breaks?
+----------------------------------
 
 Stable APIs are a good idea and you should pursue them. But sometimes
 breaks are unavoidable. How can we deal with them?
@@ -84,7 +87,8 @@ testable code base does not affect the whole code. Instead it affects
 just few classes or methods. If an API break also breaks the APIs of
 the code's users, the code base is not testable.
 
-### Improve quality
+Improve quality
+---------------
 
 We have seen, what kind of trust unit tests can supply to us. Although
 this trust does not work very well, when your code is not testable

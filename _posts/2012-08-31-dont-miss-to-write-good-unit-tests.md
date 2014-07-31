@@ -16,7 +16,8 @@ it. But many developers are writing bad code and applying TDD does not
 make them writing good code. Instead it makes them also writing bad
 tests. So this is about writing better test code.
 
-### Applying simple rules
+Applying simple rules
+---------------------
 
 To understand why test code can be bad, you should understand, what it
 should do. It should work as the parachute, that keeps you alive, when
@@ -29,7 +30,8 @@ But how can you make your tests better? It might help to follow some
 simple rules, that could be easily applied to every language or test
 style like BDD or Junit-style.
 
-### Tests should be a state machine
+Tests should be a state machine
+-------------------------------
 
 Many people do not like BDD at all, but there is a pretty nice idea in
 it - the given-when-then style some frameworks promote. This style
@@ -59,7 +61,8 @@ fun. But you should write your tests first and hopefully it makes
 writing messy code harder, if you have written a well structured tests
 first.
 
-### Tests should be good examples for using your API
+Tests should be good examples for using your API
+------------------------------------------------
 
 Every code you write has an API. If your application has a graphical
 user interface or it is an open source library, there is some way it
@@ -88,7 +91,8 @@ understands how to use your code. This documentation does not outdate
 as long as all tests are executed frequently. If it outdates, it will
 hopefully break your build.
 
-### Tests should have meaningful assertions
+Tests should have meaningful assertions
+---------------------------------------
 
 Do you write debug logging statements in your code? Why are you doing
 it?
@@ -114,7 +118,8 @@ actual value and shows you how they differ. This might help you to
 figure out, what is wrong with your code. And might do this much
 better than any debug logging.
 
-### Reaching the next level of TDD
+Reaching the next level of TDD
+------------------------------
 
 As you can see, it is not enough to learn how to do TDD. You should
 also learn how to write good tests. The above rules are not simple to

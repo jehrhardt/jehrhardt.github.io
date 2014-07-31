@@ -8,7 +8,8 @@ Today was the first day of
 a really interesting first conference day. Here is my summary for all
 who missed it or want to remember.
 
-### States and Nomads
+States and Nomads
+-----------------
 
 The opening keynote was done by
 [Zach Tellman](https://twitter.com/ztellman) and he was refering to
@@ -20,7 +21,8 @@ talk was finished with a list of interesting books:
 
 <blockquote class="twitter-tweet"><p><a href="https://twitter.com/search?q=%23euroclojure&amp;src=hash">#euroclojure</a> <a href="https://twitter.com/ztellman">@ztellman</a>&#39;s reading list for those who missed it. <a href="http://t.co/WHNDYgd69L">pic.twitter.com/WHNDYgd69L</a></p>&mdash; Bodil Stokke (@bodil) <a href="https://twitter.com/bodil/statuses/389655080041213953">October 14, 2013</a></blockquote>
 
-### Evolving life in the browser
+Evolving life in the browser
+----------------------------
 
 The next talk was
 [Evolving life in the browser](http://euroclojure.com/2013/programme/#Evolving_Life_In_The_Browser)
@@ -37,7 +39,8 @@ It looks like he shares
 [some interesting code on Github](https://github.com/thattommyhall). You
 should also checkout [his blog](http://www.thattommyhall.com).
 
-### Build your own Lisp
+Build your own Lisp
+-------------------
 
 [Bodil Stokke](https://twitter.com/bodil) was giving a funny talk
 about creating your own Lisp. Her own Lisp is called BODOL and you can
@@ -51,7 +54,8 @@ it works? She gives the answer herself:
 
 <blockquote class="twitter-tweet"><p>Use Emacs to run your Reveal.js slide decks? No problem. <a href="https://twitter.com/search?q=%23emacsrocks&amp;src=hash">#emacsrocks</a> <a href="https://t.co/C7yDoJLJAD">https://t.co/C7yDoJLJAD</a> <a href="http://t.co/1QBo0xI2cB">pic.twitter.com/1QBo0xI2cB</a></p>&mdash; Bodil Stokke (@bodil) <a href="https://twitter.com/bodil/statuses/378940392747450369">September 14, 2013</a></blockquote>
 
-### Liberator
+Liberator
+---------
 
 There was a talk about the
 [Liberator library](http://clojure-liberator.github.io/liberator/) by
@@ -68,7 +72,8 @@ world snippet:
 The snippet shows how to define a resource and declare media
 types. That's exactly, what you need in RESTful APIs.
 
-### Creative machines
+Creative machines
+-----------------
 
 My favorite talk of the day was by
 [Joseph Wilk](https://twitter.com/josephwilk) about
@@ -84,7 +89,8 @@ generated song. But listen yourself:
 
 <iframe width="480" height="360" src="https://www.youtube-nocookie.com/embed/QEjdiE0AoCU?rel=0" frameborder="0" allowfullscreen></iframe>
 
-### Drones with Clojure
+Drones with Clojure
+-------------------
 
 After Joseph's great talk and the lunch, what else should have come?
 Of course [Jarppe Lansio](https://twitter.com/jarppe). He simply had a
@@ -96,7 +102,8 @@ controled it via a
 
 You can grap [the code from Github](https://github.com/jarppe/sormilla).
 
-### 3D game design
+3D game design
+--------------
 
 A talk that confused me, when I read the programme was
 [Functional 3D Game Design](http://euroclojure.com/2013/programme/#Functional_3D_Game_Design)
@@ -111,7 +118,8 @@ can be used to create smooth behavior in 3D graphics:
 
 <blockquote class="twitter-tweet"><p>FRP style 3D dev in clojure. <a href="https://twitter.com/weavejester">@weavejester</a> demoing Reagi at <a href="https://twitter.com/search?q=%23euroclojure&amp;src=hash">#euroclojure</a> <a href="https://t.co/wwXu5PZawQ">https://t.co/wwXu5PZawQ</a> <a href="http://t.co/Fc0sHY4Dbs">pic.twitter.com/Fc0sHY4Dbs</a></p>&mdash; Tero Parviainen (@teropa) <a href="https://twitter.com/teropa/statuses/389758877786324994">October 14, 2013</a></blockquote>
 
-### Common Clojure smells
+Common Clojure smells
+---------------------
 
 The last talk about
 [Common Clojure Smells](http://euroclojure.com/2013/programme/#Common_Clojure_smells)
@@ -123,7 +131,8 @@ found. And of course she made the mass laugh with a picture of
 
 <blockquote class="twitter-tweet"><p>Theeeeere he is! <a href="https://twitter.com/JenniferSmithCo">@JenniferSmithCo</a> <a href="https://twitter.com/otfrom">@otfrom</a> <a href="https://twitter.com/search?q=%23euroclojure&amp;src=hash">#euroclojure</a> <a href="http://t.co/qthCWe006T">pic.twitter.com/qthCWe006T</a></p>&mdash; Bodil Stokke (@bodil) <a href="https://twitter.com/bodil/statuses/389774013914181633">October 14, 2013</a></blockquote>
 
-### What else?
+What else?
+----------
 
 You can follow the event on twitter with the hash tag
 [#euroclojure](https://twitter.com/search?q=%23euroclojure).
