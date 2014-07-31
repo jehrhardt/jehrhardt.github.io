@@ -13,5 +13,5 @@ defaults:
 # Define structure of links to posts
 permalink: /blog/:year/:month/:day/:title/
 
-# Exclude everything, that is required for development, from the the page
-exclude: [node_modules, package.json, bower_components, bower.json, Gruntfile.js, README.md, LICENSE.txt]
+# Exclude license and README from generated page
+exclude: [README.md, LICENSE.txt]
