@@ -72,7 +72,7 @@ grunt
 License
 -------
 
-Copyright © 2011-2013 [Jan Ehrhardt](http://derjan.io).
+Copyright © 2011-2014 [Jan Ehrhardt](http://derjan.io).
 
 All sources distributed under the
 [MIT license](LICENSE.txt).
