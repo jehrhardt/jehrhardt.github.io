@@ -1,9 +1,6 @@
 ---
 title: "Don't miss to write good unit tests"
 date: 2012-08-31 10:46
-categories:
-- Clean Code
-- TDD
 ---
 
 It is not enough for today's software developers to know their

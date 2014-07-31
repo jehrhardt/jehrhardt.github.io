@@ -1,8 +1,6 @@
 ---
 title: "Nevermind JCE unlimited strength, use OpenJDK"
 date: 2013-03-15 08:42
-categories:
-- Java
 ---
 
 If you want to use keys longer than 256 for cryptography in Java,

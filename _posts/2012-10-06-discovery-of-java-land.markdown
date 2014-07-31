@@ -1,9 +1,6 @@
 ---
 title: "Discovery of Java Land"
 date: 2012-10-06 19:16
-categories:
-- Programming languages
-- Cultural clash
 ---
 
 I am developing Java code for many years now and know how to do

@@ -1,8 +1,6 @@
 ---
 title: "Making stateless applications deal with RESTful state"
 date: 2012-11-26 09:17
-categories:
-- RESTful APIs
 ---
 
 One of the core priciples of RESTful APIs is being stateless on the

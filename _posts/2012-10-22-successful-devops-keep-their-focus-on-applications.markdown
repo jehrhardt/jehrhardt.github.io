@@ -1,8 +1,6 @@
 ---
 title: "Successful DevOps keep their focus on applications"
 date: 2012-10-22 22:51
-categories:
-- DevOps
 ---
 
 One of the most successful DevOps stories, you can find, are Platform

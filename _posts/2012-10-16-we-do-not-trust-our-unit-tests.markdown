@@ -1,8 +1,6 @@
 ---
 title: "We do not trust our unit tests"
 date: 2012-10-16 07:33
-categories:
-- TDD
 ---
 
 There is a simple rule, why we write unit test or better why we

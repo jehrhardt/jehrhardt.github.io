@@ -1,8 +1,6 @@
 ---
 title: "Spring and JSR 330 scopes"
 date: 2011-10-18 07:09
-categories:
-- Java
 ---
 
 Spring 3 added support for

@@ -1,10 +1,6 @@
 ---
 title: "Applying the test automation pyramid to the real world"
 date: 2012-09-11 7:47
-categories:
-- TDD
-- Best Practices
-- Agile Development
 ---
 
 You probaply heard of the test automation pyramid, which is a great

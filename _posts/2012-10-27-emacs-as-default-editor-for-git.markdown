@@ -1,9 +1,6 @@
 ---
 title: "Emacs as default editor for Git"
 date: 2012-10-27 12:17
-categories:
-- Emacs
-- Git
 ---
 
 By default Git uses vi on Mac OS X. Since I am using Emacs as my

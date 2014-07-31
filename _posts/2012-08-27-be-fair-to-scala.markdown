@@ -1,8 +1,6 @@
 ---
 title: "Be fair to Scala, do not expect a better Java"
 date: 2012-08-27 12:43
-categories:
-- Scala
 ---
 
 To some Java developers Scala has become an alternative to Java as a

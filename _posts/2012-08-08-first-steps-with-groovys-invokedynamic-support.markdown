@@ -1,9 +1,6 @@
 ---
 title: "First steps with Groovy's invokedynamic support"
 date: 2012-08-08 07:29
-categories:
-- Groovy
-- Java
 ---
 
 It is not really new, but

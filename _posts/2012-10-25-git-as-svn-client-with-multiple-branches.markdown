@@ -1,9 +1,6 @@
 ---
 title: "Git as SVN client with multiple branches"
 date: 2012-10-25 10:45
-categories:
-- Git
-- SVN
 ---
 
 If you are forced to use SVN, you can still use Git. Git is a great

@@ -1,9 +1,6 @@
 ---
 title: "You should not use GWT"
 date: 2012-10-23 10:25
-categories:
-- GWT
-- Web Development
 ---
 
 I have done some development with

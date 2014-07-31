@@ -1,10 +1,6 @@
 ---
 title: "Why does your Java class have no constructors?"
 date: 2012-11-01 08:28
-categories:
-- Java
-- Clean Code
-- API Design
 ---
 
 In Java land almost everyone is using frameworks like

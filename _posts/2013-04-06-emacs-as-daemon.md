@@ -1,8 +1,6 @@
 ---
 title: "Emacs as daemon"
 date: 2013-04-06 08:05
-categories:
-- Emacs
 ---
 
 I have already posted about using [Emacs as my default editor for Git commit

@@ -1,9 +1,6 @@
 ---
 title: "Multiple versions of Grails with Homebrew"
 date: 2012-12-11 11:03
-categories:
-- Mac OS X
-- Grails
 ---
 
 [Homebrew](http://mxcl.github.com/homebrew/) is a nice package manager

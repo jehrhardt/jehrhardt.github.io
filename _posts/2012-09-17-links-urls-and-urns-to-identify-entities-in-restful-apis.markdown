@@ -1,8 +1,6 @@
 ---
 title: "Links, URLs and URNs to identify entities in RESTful APIs"
 date: 2012-09-17 23:30
-categories:
-- RESTful APIs
 ---
 
 Modern APIs are [RESTful](https://en.wikipedia.org/wiki/REST). It is a
