@@ -1,6 +1,3 @@
-# Use Redcarpet for Github like code blocks.
-markdown: redcarpet
-
 # Define defaults properties
 defaults:
   -
