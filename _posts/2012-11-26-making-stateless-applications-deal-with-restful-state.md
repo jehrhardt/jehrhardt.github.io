@@ -3,7 +3,7 @@ title: "Making stateless applications deal with RESTful state"
 date: 2012-11-26 09:17
 ---
 
-One of the core priciples of RESTful APIs is being stateless on the
+One of the core principles of RESTful APIs is being stateless on the
 server. Instead of putting it on the server state is transfered to the
 client. We do not talk about state as it might appear in many stateful
 applications. The state in RESTful APIs is represented through
@@ -29,7 +29,7 @@ state access. This does not mean you are caching where the user
 currently is in your application, instead you are caching the links. A
 simple example:
 
-```javascript
+{% highlight javascript %}
 {
   "links": [
     {
@@ -38,16 +38,16 @@ simple example:
     }
   ]
 }
-```
+{% endhighlight %}
 
-In the above JSON snippet the link object has a ```rel``` attribute. To
+In the above JSON snippet the link object has a `rel` attribute. To
 cache that link create a key from the rel attribute's value inbox and
 store the URL. Now you can render some HTML with a different link:
 
-```html
+{% highlight html %}
 <a href="/foo/inbox/">My Foo Inbox</a>
-```
+{% endhighlight %}
 
 Once the user clicks the link, you can simply grep the URL from the
-cache and call it. No need for starting at ```http://api.foo.com``` and
+cache and call it. No need for starting at `http://api.foo.com` and
 following the links down to one with rel inbox.

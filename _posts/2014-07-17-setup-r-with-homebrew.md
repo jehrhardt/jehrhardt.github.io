@@ -17,10 +17,10 @@ is not provided by Homebrew: [XQuartz](https://xquartz.macosforge.org/landing/).
 Download and install the latest version, **restart** your Mac and then go on
 with Homebrew and R.
 
-```sh
+{% highlight sh %}
 brew tap homebrew/science
 brew install r
-```
+{% endhighlight %}
 
 This will also install required dependencies like
 [Fortran](http://en.wikipedia.org/wiki/Fortran).
@@ -32,9 +32,9 @@ Faster with OpenBLAS
 in R, but Homebrew does not install it by default. To install R with OpenBLAS
 bindings you can add the `--with-openblas` option.
 
-```sh
+{% highlight sh %}
 brew install r --with-openblas
-```
+{% endhighlight %}
 
 This will also install OpenBLAS itself through Homebrew.
 
@@ -46,11 +46,11 @@ version of XQuartz. I found
 [the solution on Stackoverflow](http://stackoverflow.com/questions/20457290/installing-r-with-homebrew/20457381#20457381).
 A simple `brew doctor` told me, I was running an outdated XQuartz version.
 
-```sh
+{% highlight sh %}
 brew untap homebrew/science
 brew tap homebrew/science
 brew doctor
-```
+{% endhighlight %}
 
 After installing the latest version and **restarting** my Mac, installing R
 worked fine.
@@ -61,9 +61,9 @@ Does it work now?
 The quick check for success is starting R with the `R` command (upper case
 matters). This should start R and you can type in some R code.
 
-```r
+{% highlight r %}
 x <- 4 + 5
 x
-```
+{% endhighlight %}
 
 It should print 9 😉.

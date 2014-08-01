@@ -34,13 +34,13 @@ developers, we should adapt this awesome concept to our API.
 In JSON based formats hyperlinks can be put into an attribute called
 links, which is an array of link objects. This might look like below.
 
-```javascript
+{% highlight javascript %}
 {"links": [
   {"title": "Cool picture",
    "rel": "details",
    "href": "https://example.org/albums/12/photos/13"}
 ]}
-```
+{% endhighlight %}
 
 A mobile app can also show the thumbnails and store locally the URL
 from the link object. When the user tabs with his finger on the image,

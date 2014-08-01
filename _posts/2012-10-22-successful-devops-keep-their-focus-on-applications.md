@@ -11,7 +11,7 @@ way to make operations a product. A product does not mean to sell
 individual service plans to different customers. Instead they sell the
 same standardized product to thounsands or even millions of customers.
 
-The most interessting feature of PaaS is, that you simply deploy your
+The most interesting feature of PaaS is, that you simply deploy your
 application to the cloud and scale it as you need. While developers
 are using frameworks like [Rails](http://rubyonrails.org) to create
 new applications, deployment is also focused on applications.

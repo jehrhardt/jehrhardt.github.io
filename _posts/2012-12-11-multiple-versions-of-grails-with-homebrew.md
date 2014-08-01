@@ -11,16 +11,16 @@ machine. This is about handling multiple Grails versions with
 Homebrew.
 
 Before you can install another Grails version, you need to unlink the
-```grails``` command.
+`grails` command.
 
-```sh
+{% highlight sh %}
 brew unlink grails
-```
+{% endhighlight %}
 
 You can find the different versions of Grails available via Homebrew
-with the ```versions``` command.
+with the `versions` command.
 
-```sh
+{% highlight sh %}
 brew versions grails
 
 2.0.0    git checkout f038344 Library/Formula/grails.rb
@@ -40,25 +40,25 @@ brew versions grails
 1.3.0    git checkout f257bf9 Library/Formula/grails.rb
 1.2.2    git checkout 585ee08 Library/Formula/grails.rb
 1.2.1    git checkout e4b66ce Library/Formula/grails.rb
-```
+{% endhighlight %}
 
-Behind each version you can find a Git ```checkout``` command. You can run
-the command for your version inside ```/usr/local``` and install Grails
+Behind each version you can find a Git `checkout` command. You can run
+the command for your version inside `/usr/local` and install Grails
 again.
 
-```sh
+{% highlight sh %}
 brew install grails
-```
+{% endhighlight %}
 
 That's it! Repeat the above steps for each Grails version, you want to
 use. To run Grails from your Terminal, you will need to link the
-```grails``` command against the version, you currently need. This can be
-done with the ```switch``` command.
+`grails` command against the version, you currently need. This can be
+done with the `switch` command.
 
-```sh
+{% highlight sh %}
 brew switch grails 2.0.0
-```
+{% endhighlight %}
 
 When you are using an IDE, you can simply use the Grails libraries
 installed via Homebrew. You can find them in
-_/usr/local/Cellar/grails/${grails.version}/libexec/_.
+`/usr/local/Cellar/grails/${grails.version}/libexec/`.

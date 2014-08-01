@@ -63,11 +63,11 @@ There was a talk about the
 good option for creating RESTful APIs in Clojure. To give you a hello
 world snippet:
 
-```clojure
+{% highlight clojure %}
 (defresource hello-world
   :available-media-types ["text/plain"]
   :handle-ok "Hello, world!")
-```
+{% endhighlight %}
 
 The snippet shows how to define a resource and declare media
 types. That's exactly, what you need in RESTful APIs.

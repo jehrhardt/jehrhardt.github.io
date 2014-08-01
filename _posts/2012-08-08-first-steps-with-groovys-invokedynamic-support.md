@@ -18,21 +18,20 @@ Get your machine ready
 
 First of all you should have installed
 [Java 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html),
-since invokedynamic is not available in earlier versions of Java. The
-easiest way to test invokedynamic support is by using the command
-line, so should also have installed
-[Groovy 2.0](http://groovy.codehaus.org/Download) or later.
+since invokedynamic is not available in earlier versions of Java. The easiest
+way to test invokedynamic support is by using the command line, so should also
+have installed [Groovy 2.0](http://groovy.codehaus.org/Download) or later.
 
-Having Groovy installed you could simply use it with the ```groovy```
+Having Groovy installed you could simply use it with the `groovy`
 command in your terminal, but a different way, you should be familiar
-with is to compile Groovy code with ```groovyc``` to Java byte code. The
-byte code can be executed with ```java -classpath```.
+with is to compile Groovy code with `groovyc` to Java byte code. The
+byte code can be executed with `java -classpath`.
 
-```sh
+{% highlight sh %}
 wget -O HelloWorld.groovy https://raw.github.com/gist/3292829/f9d2a37c6cdc45570aab1bf0ce665262899a0dde/HelloWorld.java
 groovyc HelloWorld.groovy
 java -classpath .:$GROOVY_HOME/embeddable/groovy-all-2.0.1.jar HelloWorld
-```
+{% endhighlight %}
 
 These steps are pretty similar to my
 [first steps with Java](https://gist.github.com/3292829) years ago and
@@ -43,23 +42,23 @@ Two steps to use invokedynamic
 ------------------------------
 
 The first step on our way to invokedynamic is using the right Groovy
-JAR, while executing our byte code. In ```$GROOVY\_HOME/embeddable/``` you
-can find ```groovy-all-2.0.1-indy.jar```, where indy is short for
+JAR, while executing our byte code. In `$GROOVY\_HOME/embeddable/` you
+can find `groovy-all-2.0.1-indy.jar`, where indy is short for
 invokedynamic. This JAR contains a version of Groovy, that uses
 invokedynamic instead of Groovy's very own old dynamic invoking code.
 
 Using the indy JAR is not enough, since everything should still work
 under Java 5 or 6, even this JAR is used. The byte code created by
 Groovy compiler is not using any Java 7 features. So the second step
-is to tell the ```groovyc``` command to compile our Groovy code using
-invokedynamic by adding the ```--indy``` flag. The above sample should now
+is to tell the `groovyc` command to compile our Groovy code using
+invokedynamic by adding the `--indy` flag. The above sample should now
 look like this:
 
-```sh
+{% highlight sh %}
 wget -O HelloWorld.groovy https://raw.github.com/gist/3292829/f9d2a37c6cdc45570aab1bf0ce665262899a0dde/HelloWorld.java
 groovyc --indy HelloWorld.groovy
 java -classpath .:$GROOVY_HOME/embeddable/groovy-all-2.0.1-indy.jar HelloWorld
-```
+{% endhighlight %}
 
 Make your Groovy 2.0 indy
 -------------------------
@@ -67,23 +66,23 @@ Make your Groovy 2.0 indy
 Running the above code will fail at second command with a curious
 exception:
 
-```sh
+{% highlight sh %}
 groovy.lang.GroovyRuntimeException: Cannot use invokedynamic, indy module was excluded from this build.
-```
+{% endhighlight %}
 
-What went wrong? Didn't I use Groovy 2.0? Didn't I pass the ```--indy```
+What went wrong? Didn't I use Groovy 2.0? Didn't I pass the `--indy`
 flag correctly? The
 [solution](http://permalink.gmane.org/gmane.comp.lang.groovy.devel/26698)
 is simple, once you understand your Groovy installation. The Groovy
-JARs used by ```groovyc``` are in ```$GROOVY\_HOME/lib/```, but the indy JARs
-are in ```$GROOVY\_HOME/indy/```. So replace the Groovy JAR with the indy
+JARs used by `groovyc` are in `$GROOVY\_HOME/lib/`, but the indy JARs
+are in `$GROOVY\_HOME/indy/`. So replace the Groovy JAR with the indy
 version.
 
-```sh
+{% highlight sh %}
 cd $GROOVY_HOME
 cp -R lib lib.org
 cp indy/groovy-2.0.1-indy.jar lib/groovy-2.0.1.jar
-```
+{% endhighlight %}
 
 Now the above sample should work, but it really looks like the Groovy
 developers do not want you to use invokedynamic. They made it as
@@ -99,13 +98,13 @@ delegated to the JVM, what happens with invokedynamic.
 
 You can test it using a simple
 [Fibonacci sample](https://gist.github.com/3293383). Running the
-sample on my machine with ```fibonacci(42)```, the result looks like this:
+sample on my machine with `fibonacci(42)`, the result looks like this:
 
-```sh
+{% highlight sh %}
 Java: 1.43s
 Groovy 1.8 or 2.0: 3.08s
 Groovy 2.0 with indy: 6.55s
-```
+{% endhighlight %}
 
 It's just the first step for Groovy
 -----------------------------------

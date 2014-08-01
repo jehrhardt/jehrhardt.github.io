@@ -24,7 +24,7 @@ should do. It should work as the parachute, that keeps you alive, when
 refactoring your code. Tests may help you to be sure nothing breaks,
 when adding new features to your code. But tests may also work as
 sample code, that documents your APIs better than any other
-documentaion except the code itself.
+documentation except the code itself.
 
 But how can you make your tests better? It might help to follow some
 simple rules, that could be easily applied to every language or test
