@@ -1,6 +1,6 @@
 ---
 title: "How I became an emoji junky"
-date: 2014-09-07 06:03
+date: 2014-09-08 20:57
 ---
 
 For a long time I did not care about [emoji](http://en.wikipedia.org/wiki/Emoji).
