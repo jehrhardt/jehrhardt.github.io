@@ -2,8 +2,8 @@
   "name": "derjan.io",
   "version": "1.0.0",
   "dependencies": {
-    "grunt": "0.4.1",
-    "grunt-contrib-less": "0.6.4",
-    "grunt-contrib-uglify": "0.2.2"
+    "grunt": "0.4.5",
+    "grunt-contrib-less": "0.11.4",
+    "grunt-contrib-uglify": "0.6.0"
   }
 }
