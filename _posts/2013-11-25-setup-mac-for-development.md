@@ -53,7 +53,7 @@ from the internet, but the open source community fixes this with
 Homebrew. It is extremly easy to install.
 
 {% highlight sh %}
-ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 {% endhighlight %}
 
 By default tools from Homebrew will be installed to /usr/local and
