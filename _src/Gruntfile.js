@@ -3,12 +3,22 @@ module.exports = function(grunt) {
     less: {
       production: {
         options: {
-          paths: ["bower_components/bootstrap/less"],
-          yuicompress: true
+          paths: ["bower_components/bootstrap/less"]
         },
         files: {
           '../assets/css/styles.css': 'less/styles.less'
         }
+      }
+    },
+    cssmin: {
+      minify: {
+        files: [{
+          expand: true,
+          cwd: '../assets/css/',
+          src: ['*.css', '!*.min.css'],
+          dest: '../assets/css/',
+          ext: '.min.css'
+        }]
       }
     },
     uglify: {
@@ -26,6 +36,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-  grunt.registerTask('default', ['less', 'uglify']);
+  grunt.registerTask('default', ['less', 'cssmin', 'uglify']);
 };

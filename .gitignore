@@ -6,3 +6,6 @@ _src/node_modules/*
 
 # bower
 _src/bower_components/*
+
+# expanded CSS
+assets/css/styles.css
