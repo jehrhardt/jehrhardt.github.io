@@ -26,9 +26,14 @@ module.exports = function(grunt) {
         files: {
           '../assets/js/app.js': ['js/twitter.js',
                                   'js/google-analytics.js',
-                                  'js/disqus.js'],
-          '../assets/js/html5shiv.js': 'bower_components/html5shiv/dist/html5shiv-printshiv.js',
-          '../assets/js/respond.js': 'bower_components/respond/src/respond.js'
+                                  'js/disqus.js']
+        }
+      }
+    },
+    bower: {
+      install: {
+        options: {
+          copy: false
         }
       }
     }
@@ -37,6 +42,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-bower-task');
 
-  grunt.registerTask('default', ['less', 'cssmin', 'uglify']);
+  grunt.registerTask('default', ['bower:install', 'less', 'cssmin', 'uglify']);
 };

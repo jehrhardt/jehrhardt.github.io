@@ -9,23 +9,16 @@ install both through some
 [package manager](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
 for your system.
 
-Then install the tools and dependencies. First the the Grunt command line
-interface and bower globally through NPM.
+Then install the tools and dependencies.
 
 ```sh
-npm install -g grunt-cli bower
+npm install -g grunt-cli
 ```
 
 Install NPM dependencies.
 
 ```sh
 npm install
-```
-
-Install Bower dependencies.
-
-```sh
-bower install
 ```
 
 Usage
