@@ -6,6 +6,12 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+  -
+    scope:
+      path: ""
+      type: "drafts"
+    values:
+      layout: "post"
 
 # Define structure of links to posts
 permalink: /blog/:year/:month/:day/:title/
