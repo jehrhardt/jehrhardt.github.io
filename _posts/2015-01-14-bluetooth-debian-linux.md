@@ -15,22 +15,22 @@ Bluetooth under Linux is typically provided by
 [bluez](http://www.bluez.org), which can be installed easily from the
 Debian repositories.
 
-```sh
+{% highlight sh %}
 sudo apt-get install bluetooth bluez-utils bluez-firmware
-```
+{% endhighlight %}
 
 Once installed you should find a service called bluetooth on your
 machine and you should check if it is running.
 
-```sh
+{% highlight sh %}
 service bluetooth status
-```
+{% endhighlight %}
 
 You should also check your Bluetooth dongle.
 
-```sh
+{% highlight sh %}
 lsusb | grep Bluetooth
-```
+{% endhighlight %}
 
 This will result in something like *Bus 001 Device 005: ID 0a12:0001
 Cambridge Silicon Radio, Ltd Bluetooth Dongle (HCI mode)*, which
@@ -41,9 +41,9 @@ Connect a device as serial port
 
 First you need to scan for Bluetooth devices to connect to.
 
-```sh
+{% highlight sh %}
 hcitool scan
-```
+{% endhighlight %}
 
 The scanning result should be a list of all found Bluetooth
 devices. Each listed with its MAC address and a vendor name.
@@ -51,9 +51,9 @@ devices. Each listed with its MAC address and a vendor name.
 Next set the PIN for the device. Many devices use *0000* or *1234* as
 PIN.
 
-```sh
+{% highlight sh %}
 sudo bluetooth-agent <PIN of the device> <MAC address of the device>
-```
+{% endhighlight %}
 
 The command is only required once for pairing the device. Once paired,
 it automatically reconnects.
@@ -61,14 +61,14 @@ it automatically reconnects.
 To connect via serial port you need to now, on which channel a serial
 port can be opened. Bluetooth devices can be asked for this.
 
-```sh
+{% highlight sh %}
 sdptool browse --l2cap <MAC address of the device>
-```
+{% endhighlight %}
 
 This might result in multiple entries like this, describing the
 capabilities available on each channel.
 
-```
+{% highlight sh %}
 Service Name: GNS GPS
 Service RecHandle: 0x10000
 Service Class ID List:
@@ -81,27 +81,27 @@ Language Base Attr List:
   code_ISO639: 0x656e
   encoding:    0x6a
   base_offset: 0x100
-  ```
+{% endhighlight %}
 
 Choose a channel, that offers RFCOMM.
 
 Serial ports are configured under `/etc/bluetooth/rfcomm.conf`. Open
 the file in a text editor and fill it with the folling content.
 
-```
+{% highlight sh %}
 rfcomm0 {
   bind yes;
   device <MAC address of the device>;
   channel <channel for RFCOMM>;
   comment "GNS 2000 (GPS & GLONAS)";
 }
-```
+{% endhighlight %}
 
 Restart the Bluetooth service and you are done.
 
-```sh
+{% highlight sh %}
 sudo service bluetooth restart
-```
+{% endhighlight %}
 
 Test the connection
 -------------------
@@ -110,9 +110,9 @@ The easies way to test the Bluetooth connection is via Screen. If you
 have configured a device `rfcomm0` as above, the Bluetooth service
 will create the device under `/dev/rfcomm0`.
 
-```sh
+{% highlight sh %}
 screen /dev/rfcomm0
-```
+{% endhighlight %}
 
 Screen gives you access to the device. If `/dev/rfcomm0` is a
 Bluetooth GPS tracker, you should now see the logged data line by
