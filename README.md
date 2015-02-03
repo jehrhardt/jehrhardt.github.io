@@ -31,7 +31,7 @@ jekyll build
 License
 -------
 
-Copyright © 2011-2014 [Jan Ehrhardt](http://derjan.io).
+Copyright © 2011-2015 [Jan Ehrhardt](http://derjan.io).
 
 All content distributed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

@@ -52,7 +52,7 @@ pygmentize -f html -S monokai > less/monokai.less
 License
 -------
 
-Copyright © 2011-2014 [Jan Ehrhardt](http://derjan.io).
+Copyright © 2011-2015 [Jan Ehrhardt](http://derjan.io).
 
 All sources in this directory distributed under the
 [MIT license](LICENSE).
